@@ -914,9 +914,6 @@
         slide.className = `slide ${index === 0 ? 'active' : ''}`;
         slide.style.backgroundImage = `url('${src}')`;
         // Ensure image covers the area properly
-        slide.style.backgroundSize = 'cover';
-        slide.style.backgroundPosition = 'center';
-        slide.style.backgroundRepeat = 'no-repeat';
         sliderContainer.appendChild(slide);
     });
 
@@ -961,4 +958,3 @@
     });
 </script>
 </body>
-</html>
