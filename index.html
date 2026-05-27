@@ -74,6 +74,7 @@
             transition: var(--transition-smooth);
             cursor: pointer;
             border: 2px solid transparent;
+            text-align: center;
         }
 
         .btn-primary {
@@ -104,6 +105,8 @@
             background-color: var(--pure-black);
             color: var(--pure-white);
             border: 2px solid var(--primary-red);
+            width: 100%;
+            margin-top: 20px;
         }
 
         .btn-dark:hover {
@@ -126,8 +129,9 @@
         }
 
         .logo img {
-            height: 50px; /* Adjust based on your logo design */
+            height: 60px;
             display: block;
+            object-fit: contain;
         }
 
         nav ul {
@@ -163,7 +167,7 @@
             width: 100%;
         }
 
-        /* --- HERO SLIDER SECTION --- */
+        /* --- AUTOPLAY BACKGROUND SLIDER --- */
         .hero {
             position: relative;
             height: 85vh;
@@ -172,32 +176,42 @@
             overflow: hidden;
         }
 
-        /* Temporary structural background placeholder until you drop your URLs in */
         .slider-container {
             width: 100%;
             height: 100%;
             position: absolute;
             top: 0;
             left: 0;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.85));
             z-index: 1;
         }
 
-        /* Individual slide structure setup for your URLs */
         .slide {
             position: absolute;
             width: 100%;
             height: 100%;
-            opacity: 0;
-            animation: slideFade 16s infinite;
+            top: 0;
+            left: 0;
             background-size: cover;
             background-position: center;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
         }
 
-        /* Example setup for 3 images. Once you have URLs, put them inside url('') below */
-        .slide:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('YOUR_IMAGE_URL_1'); animation-delay: 0s; opacity: 1; }
-        .slide:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('YOUR_IMAGE_URL_2'); animation-delay: 5s; }
-        .slide:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url('YOUR_IMAGE_URL_3'); animation-delay: 10s; }
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Dark overlay overlayed on the dynamic slider background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85));
+            z-index: 2;
+        }
 
         .hero-content {
             position: relative;
@@ -226,6 +240,59 @@
             max-width: 750px;
             margin-bottom: 30px;
             font-weight: 300;
+        }
+
+        /* --- LIVE DONATION TRACKER BLOCK --- */
+        .tracker-section {
+            background-color: var(--pure-black);
+            padding: 60px 4%;
+            border-bottom: 4px solid var(--pure-white);
+            text-align: center;
+        }
+
+        .tracker-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-black);
+            border: 1px solid #222;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .tracker-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .tracker-metrics {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .metric-raised { color: var(--primary-red); font-size: 2rem; font-weight: 900; }
+        .metric-goal { color: var(--text-muted); padding-top: 10px; }
+
+        .progress-bar-bg {
+            background-color: #222;
+            height: 24px;
+            border-radius: 12px;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 1px solid #333;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--dark-red), var(--primary-red));
+            height: 100%;
+            width: 0%; 
+            border-radius: 12px;
+            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
         }
 
         /* --- BIOGRAPHY / INTRO SECTION --- */
@@ -260,7 +327,128 @@
             margin-bottom: 20px;
         }
 
-        /* --- PRIZES SECTION (ANIMATED CARDS) --- */
+        /* --- LOGISTICS / TIMELINE SECTION --- */
+        .schedule-section {
+            background-color: var(--pure-white);
+            color: var(--pure-black);
+            padding: 100px 4%;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--primary-red);
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            border-left: 4px solid var(--pure-black);
+            padding-left: 30px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--primary-red);
+            border: 4px solid var(--pure-white);
+        }
+
+        .time-tag {
+            font-weight: 900;
+            color: var(--primary-red);
+            font-size: 0.9rem;
+        }
+
+        .timeline-item h3 {
+            font-size: 1.4rem;
+            margin: 5px 0 10px 0;
+        }
+
+        /* --- SQUAD LINEUP STYLES --- */
+        .lineup-section {
+            background-color: var(--pure-white);
+            padding: 80px 4%;
+            text-align: center;
+            border-top: 2px solid rgba(0,0,0,0.1);
+            color: var(--pure-black);
+        }
+        .lineup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .squad-card {
+            background-color: var(--pure-black);
+            color: var(--pure-white);
+            padding: 35px;
+            border-radius: 6px;
+            border-left: 5px solid var(--primary-red);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .squad-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+            color: var(--pure-white);
+        }
+        .player-list {
+            list-style: none;
+        }
+        .player-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #141414;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        .jersey-num {
+            background-color: var(--primary-red);
+            color: var(--pure-white);
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-right: 15px;
+            font-size: 0.85rem;
+            font-weight: 900;
+        }
+        .tribute-badge {
+            background-color: var(--pure-white);
+            color: var(--pure-black);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: auto;
+            font-weight: 900;
+            letter-spacing: 1px;
+            animation: pulseGlow 2s infinite;
+        }
+
+        /* --- PRIZES SECTION --- */
         .prizes-section {
             background-color: var(--pure-black);
             padding: 100px 4%;
@@ -298,9 +486,12 @@
             transition: var(--transition-smooth);
             position: relative;
             overflow: hidden;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* Sophisticated overlay tracking line effect on hover */
         .prize-card::before {
             content: '';
             position: absolute;
@@ -332,12 +523,93 @@
 
         .prize-card h3 {
             font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .prize-value {
+            display: block;
+            color: var(--primary-red);
+            font-weight: 900;
+            font-size: 1.1rem;
             margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .prize-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .ticket-tier {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--pure-white);
+            display: block;
+            text-align: center;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        /* --- MERCHANDISE SECTION --- */
+        .merch-preview {
+            background-color: var(--pure-black);
+            padding: 100px 4%;
+            border-top: 4px solid var(--primary-red);
+            text-align: center;
+        }
+
+        .merch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .merch-card {
+            background-color: var(--card-black);
+            padding: 25px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid #1a1a1a;
+        }
+
+        .merch-img-placeholder {
+            background-color: #222;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-muted);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .merch-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .merch-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .price {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--primary-red);
         }
 
         /* --- FOOTER --- */
@@ -353,8 +625,9 @@
         }
 
         .footer-logo img {
-            height: 60px;
+            height: 80px;
             margin: 0 auto;
+            object-fit: contain;
         }
 
         .footer-tagline {
@@ -371,50 +644,27 @@
             letter-spacing: 1px;
         }
 
-        /* --- CSS ANIMATIONS --- */
+        /* --- CSS KEYFRAMES --- */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Quick-and-clean CSS background slider animation wrapper */
-        @keyframes slideFade {
-            0% { opacity: 0; }
-            5% { opacity: 1; }
-            30% { opacity: 1; }
-            35% { opacity: 0; }
-            100% { opacity: 0; }
+        @keyframes pulseGlow {
+            0% { transform: scale(1); }
+            5% { transform: scale(1.05); background-color: var(--primary-red); color: white; }
+            100% { transform: scale(1); }
         }
 
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-            .bio-section {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-            .bio-title h2 {
-                font-size: 2.2rem;
-            }
-            .bio-title .accent-word {
-                font-size: 3rem;
-            }
+            header { flex-direction: column; gap: 15px; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.2rem; }
+            .bio-section { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .bio-title h2 { font-size: 2.2rem; }
+            .bio-title .accent-word { font-size: 3rem; }
+            .tracker-metrics { flex-direction: column; gap: 5px; }
         }
     </style>
 </head>
@@ -423,26 +673,23 @@
     <!-- HEADER -->
     <header>
         <div class="logo">
-            <!-- Replace with path to your logo asset once uploaded to /images -->
-            <img src="images/logo-left.png" alt="KCB14 Logo">
+            <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo">
         </div>
         <nav>
             <ul>
                 <li><a href="#history">KCB14 History</a></li>
                 <li><a href="#event">Memorial Event</a></li>
+                <li><a href="#lineup">The Lineup</a></li>
                 <li><a href="#prizes">Raffles & Prizes</a></li>
                 <li><a href="#items">Limited Edition Items</a></li>
-                <li><a href="#partner">Partner with Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- HERO SECTION WITH SLIDER WRAPPER -->
+    <!-- HERO SECTION WITH DYNAMIC AUTOMATION SLIDER -->
     <section class="hero">
-        <div class="slider-container">
-            <div class="slide"></div>
-            <div class="slide"></div>
-            <div class="slide"></div>
+        <div class="slider-container" id="hero-slider">
+            <!-- Images run dynamically out of background script array loops -->
         </div>
         
         <div class="hero-content">
@@ -454,6 +701,26 @@
                 <a href="#items" class="btn btn-secondary">Buy Limited Edition Items</a>
                 <a href="#donate" class="btn btn-primary">Donate to the Fund</a>
             </div>
+        </div>
+    </section>
+
+    <!-- LIVE DONATION TRACKER PANEL -->
+    <section class="tracker-section" id="donate">
+        <div class="tracker-container">
+            <h2 class="tracker-title">Legacy Fund Tracker</h2>
+            <div class="tracker-metrics">
+                <div>
+                    <span style="font-size: 0.85rem; display:block; text-transform: uppercase; color: var(--text-muted);">Total Raised Overall</span>
+                    <span class="metric-raised" id="raised-text">R 0</span>
+                </div>
+                <div class="metric-goal">
+                    Goal: <span id="goal-text">R 150,000</span>
+                </div>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">Track updates systematically as Yoco deposits settle.</p>
         </div>
     </section>
 
@@ -473,44 +740,211 @@
         </div>
     </section>
 
+    <!-- LOGISTICS / TIMELINE SECTION -->
+    <section class="schedule-section" id="event">
+        <h2>The Memorial Event Schedule</h2>
+        <p class="section-subtitle">Honoring a champion on and off the field</p>
+        
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="time-tag">11:00 AM</div>
+                <h3>Gates Open & Community Warm-up</h3>
+                <p>Arrive early to secure your spot, browse exclusive limited-edition merchandise, and enter the opening raffle tiers.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="time-tag">01:30 PM</div>
+                <h3>The Memorial Tribute Match</h3>
+                <p>Our main feature match kicking off in celebration of Kyle's incredible legacy on the pitch.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="time-tag">01:38 PM</div>
+                <h3>The 8th-Minute Legacy Applause</h3>
+                <p>A coordinated, stadium-wide moment of applause to honor Kyle's definitive presence and community impact.</p>
+            </div>
+            <div class="timeline-item">
+                <div class="time-tag">04:30 PM</div>
+                <h3>Grand Raffle Draw & Auction closes</h3>
+                <p>Live announcement of the top prize winners on the main stage. All proceeds go directly to the memorial fund.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATCH DAY LINEUP SECTION -->
+    <section class="lineup-section" id="lineup">
+        <h2>The Commemorative Squad</h2>
+        <p class="section-subtitle" style="color: var(--primary-red);">1st Team Lineup | Running for the Legacy</p>
+        
+        <div class="lineup-grid">
+            <!-- Forward Pack Card -->
+            <div class="squad-card">
+                <h3>The Forwards</h3>
+                <ul class="player-list">
+                    <li><span class="jersey-num">1</span> Loosehead Prop</li>
+                    <li><span class="jersey-num">2</span> Hooker</li>
+                    <li><span class="jersey-num">3</span> Tighthead Prop</li>
+                    <li><span class="jersey-num">4</span> Lock</li>
+                    <li><span class="jersey-num">5</span> Lock</li>
+                    <li><span class="jersey-num">6</span> Blindside Flanker</li>
+                    <li><span class="jersey-num">7</span> Openside Flanker</li>
+                    <li><span class="jersey-num">8</span> Number 8 <span class="tribute-badge">Kyle's Jersey</span></li>
+                </ul>
+            </div>
+
+            <!-- Backline Card -->
+            <div class="squad-card">
+                <h3>The Backs</h3>
+                <ul class="player-list">
+                    <li><span class="jersey-num">9</span> Scrum-half</li>
+                    <li><span class="jersey-num">10</span> Fly-half</li>
+                    <li><span class="jersey-num">11</span> Left Wing</li>
+                    <li><span class="jersey-num">12</span> Inside Centre</li>
+                    <li><span class="jersey-num">13</span> Outside Centre</li>
+                    <li><span class="jersey-num">14</span> Right Wing <span class="tribute-badge">KCB14</span></li>
+                    <li><span class="jersey-num">15</span> Fullback</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
     <!-- TOP PRIZES SECTION -->
     <section class="prizes-section" id="prizes">
         <h2>Grand Raffle & Prizes</h2>
-        <p class="prizes-subtitle">Incredible items up for grabs — missing out isn't an option</p>
+        <p class="prizes-subtitle">Incredible items up for grabs — entries directly support the legacy fund</p>
         
         <div class="prizes-grid">
-            <!-- Prize Card 1 -->
+            <!-- Prize 1 -->
             <div class="prize-card">
-                <span class="prize-icon">🏆</span>
-                <h3>Placeholder Prize One</h3>
-                <p>An unbelievable, custom premium reward waiting for your final specifications. Designed to drive ticket sales instantly.</p>
+                <div>
+                    <span class="prize-icon">🏆</span>
+                    <h3>Main Prize: Weekend Away for 2</h3>
+                    <span class="prize-value">Valued at R18,000</span>
+                    <p>An incredible getaway luxury experience built for two. Stand a chance to reset, relax, and back a historic cause.</p>
+                </div>
+                <div>
+                    <span class="ticket-tier">R150 Per Ticket</span>
+                    <a href="https://pay.yoco.com/r/2wgAVo" target="_blank" class="btn btn-dark" style="margin-top:0;">Get Tickets</a>
+                </div>
             </div>
 
-            <!-- Prize Card 2 -->
+            <!-- Prize 2 -->
             <div class="prize-card">
-                <span class="prize-icon">🔥</span>
-                <h3>Placeholder Prize Two</h3>
-                <p>A second high-value item or exclusive experience that will compel your community to stand up and support the cause.</p>
+                <div>
+                    <span class="prize-icon">🔥</span>
+                    <h3>Prize 2: Luxury Yacht Trip for 2</h3>
+                    <span class="prize-value">Valued at R9,000</span>
+                    <p>Take to the open waters and experience an exclusive ocean excursion built to deliver unforgettable views.</p>
+                </div>
+                <div>
+                    <span class="ticket-tier">R50 Per Ticket</span>
+                    <a href="https://pay.yoco.com/r/mEJjgP" target="_blank" class="btn btn-dark" style="margin-top:0;">Get Tickets</a>
+                </div>
             </div>
 
-            <!-- Prize Card 3 -->
+            <!-- Prize 3 -->
             <div class="prize-card">
-                <span class="prize-icon">⚡</span>
-                <h3>Placeholder Prize Three</h3>
-                <p>The ultimate addition to our line-up. A jaw-dropping prize that turns interest into immediate donations.</p>
+                <div>
+                    <span class="prize-icon">⚡</span>
+                    <h3>Prize 3: Premium Alcohol Hamper</h3>
+                    <span class="prize-value">Valued at R6,000</span>
+                    <p>A carefully selected, high-end collection of premium spirits and elite pairings perfect for any celebration layout.</p>
+                </div>
+                <div>
+                    <span class="ticket-tier">R50 Per Ticket</span>
+                    <a href="https://pay.yoco.com/r/m9eZo9" target="_blank" class="btn btn-dark" style="margin-top:0;">Get Tickets</a>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- MERCHANDISE SECTION -->
+    <section class="merch-preview" id="items">
+        <h2 style="color: var(--pure-white);">Limited Edition Legacy Kits</h2>
+        <p class="prizes-subtitle" style="color: var(--text-muted); margin-bottom: 60px;">Exclusive releases available only for this memorial frame</p>
+        
+        <div class="merch-grid">
+            <div class="merch-card">
+                <div class="merch-img-placeholder">[ Custom Jersey Asset ]</div>
+                <h3>The KCB14 Commemorative Jersey</h3>
+                <p>Premium, high-performance fit featuring original detailing and custom tracking elements.</p>
+                <span class="price">R 650</span>
+            </div>
+            <div class="merch-card">
+                <div class="merch-img-placeholder">[ Heritage Cap Asset ]</div>
+                <h3>Legacy Snapback Cap</h3>
+                <p>Classic structured fit with precision embroidery celebrating the spirit of our anchor player.</p>
+                <span class="price">R 250</span>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px;" id="partner">
+            <a href="#" class="btn btn-primary">Secure Your Merchandise</a>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <div class="footer-logo">
-            <!-- Replace with path to centered logo asset once uploaded to /images -->
-            <img src="images/logo-center.png" alt="KCB14 Centered Logo">
+            <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo Centered">
         </div>
         <p class="footer-tagline">Built on Legacy, Driven by Passion</p>
         <p class="footer-sub">The KCB Memorial Day</p>
     </footer>
+
+    <!-- CONTROLLERS & ENGINE SCRIPTS -->
+    <script>
+        // --- CONFIG DATA FOR REGISTRATION ---
+        const amountRaised = 42500;  
+        const targetGoal = 150000;   
+
+        // --- WHATSAPP CONTINUOUS AUTOPLAY IMAGE SLIDER ARRAY ---
+        const sliderImages = [
+            'WhatsApp Image 2026-03-23 at 11.25.03 AM (1).jpg',
+            'WhatsApp Image 2026-03-23 at 11.25.03 AM (3).jpg',
+            'WhatsApp Image 2026-03-23 at 11.25.05 AM (3).jpg',
+            'WhatsApp Image 2026-03-23 at 11.25.02 AM (2).jpg',
+            'WhatsApp Image 2026-03-23 at 11.25.05 AM (1).jpg',
+            'WhatsApp Image 2026-03-23 at 11.25.04 AM (1).jpg'
+        ];
+
+        function initSlider() {
+            const container = document.getElementById('hero-slider');
+            
+            // Generate the DOM slide wrappers
+            sliderImages.forEach((imgSrc, index) => {
+                const slide = document.createElement('div');
+                slide.className = `slide${index === 0 ? ' active' : ''}`;
+                slide.style.backgroundImage = `url('images/${imgSrc}')`;
+                container.appendChild(slide);
+            });
+
+            // Set up infinite structural looping intervals
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 4500); // Transitions safely every 4.5 seconds
+        }
+
+        function initializeTracker() {
+            const percentage = Math.min((amountRaised / targetGoal) * 100, 100);
+            
+            document.getElementById('raised-text').innerText = 'R ' + amountRaised.toLocaleString('en-ZA');
+            document.getElementById('goal-text').innerText = 'R ' + targetGoal.toLocaleString('en-ZA');
+            
+            setTimeout(() => {
+                document.getElementById('progress-fill').style.width = percentage + '%';
+            }, 200);
+        }
+
+        // Orchestrate scripts on layout completion
+        window.addEventListener('DOMContentLoaded', () => {
+            initSlider();
+            initializeTracker();
+        });
+    </script>
 
 </body>
 </html>
