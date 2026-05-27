@@ -932,23 +932,32 @@
             publicKey: 'pk_live_c22d9aa2kw60Rvjbb344' // Replace with your actual Yoco public key
         });
 
-        document.querySelectorAll('.yoco-checkout-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                yoco.showPopup({
-                    amountInCents: button.dataset.amount,
-                    currency: 'ZAR',
-                    name: button.dataset.name,
-                    description: 'Contribution to KCB14 Memorial Legacy Fund',
-                    callback: (result) => {
-                        if (result.error) {
-                            alert("Payment failed: " + result.error.message);
-                        } else {
-                            alert("Thank you for your contribution!");
-                        }
+       // Attach event listeners to your buttons
+    document.querySelectorAll('.donation-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const amountInCents = button.dataset.amount; // e.g., "5000" for R50.00
+            
+            yoco.showPopup({
+                amountInCents: amountInCents,
+                currency: 'ZAR',
+                name: 'KCB14 Memorial Donation',
+                description: 'Contribution to Kyle Barnes Memorial Legacy Fund',
+                // Adding metadata ensures the customer is prompted for their contact details
+                metadata: {
+                    event: 'Kyle Barnes Memorial Day',
+                    donation_level: button.dataset.level 
+                },
+                callback: (result) => {
+                    if (result.error) {
+                        console.error("Payment failed: " + result.error.message);
+                    } else {
+                        // Handle successful payment here
+                        alert("Thank you for your generous contribution!");
                     }
-                });
+                }
             });
         });
+    });
     </script>
 </body>
 </html>
