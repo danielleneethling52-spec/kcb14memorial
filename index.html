@@ -904,23 +904,28 @@
             "images/WhatsApp Image 2026-03-23 at 11.25.02 AM (2).jpg"
         ];
 
-        ];
+       const sliderContainer = document.getElementById('hero-slider');
+    
+    // Create elements dynamically
+    sliderImages.forEach((src, index) => {
+        const slide = document.createElement('div');
+        slide.className = `slide ${index === 0 ? 'active' : ''}`;
+        slide.style.backgroundImage = `url('${src}')`;
+        // Ensure image covers the area properly
+        slide.style.backgroundSize = 'cover';
+        slide.style.backgroundPosition = 'center';
+        slide.style.backgroundRepeat = 'no-repeat';
+        sliderContainer.appendChild(slide);
+    });
 
-        const sliderContainer = document.getElementById('hero-slider');
-        sliderImages.forEach((src, index) => {
-            const slide = document.createElement('div');
-            slide.className = `slide ${index === 0 ? 'active' : ''}`;
-            slide.style.backgroundImage = `url('${src}')`;
-            sliderContainer.appendChild(slide);
-        });
-
-        let currentSlide = 0;
-        setInterval(() => {
-            const slides = document.querySelectorAll('.slide');
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 5000);
+    // Slider logic
+    let currentSlide = 0;
+    setInterval(() => {
+        const slides = document.querySelectorAll('.slide');
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }, 5000);;
 
         // --- PROGRESS BAR INITIALIZATION ---
         const progressFill = document.getElementById('progress-fill');
@@ -932,32 +937,26 @@
             publicKey: 'pk_live_c22d9aa2kw60Rvjbb344' // Replace with your actual Yoco public key
         });
 
-       // Attach event listeners to your buttons
-    document.querySelectorAll('.donation-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            const amountInCents = button.dataset.amount; // e.g., "5000" for R50.00
-            
+      document.querySelectorAll('.yoco-checkout-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const amount = parseInt(this.getAttribute('data-amount'));
+            const name = this.getAttribute('data-name');
+
             yoco.showPopup({
-                amountInCents: amountInCents,
+                amountInCents: amount,
                 currency: 'ZAR',
-                name: 'KCB14 Memorial Donation',
-                description: 'Contribution to Kyle Barnes Memorial Legacy Fund',
-                // Adding metadata ensures the customer is prompted for their contact details
-                metadata: {
-                    event: 'Kyle Barnes Memorial Day',
-                    donation_level: button.dataset.level 
-                },
+                name: 'KCB14 Memorial',
+                description: name,
                 callback: (result) => {
                     if (result.error) {
-                        console.error("Payment failed: " + result.error.message);
+                        alert("Payment Error: " + result.error.message);
                     } else {
-                        // Handle successful payment here
-                        alert("Thank you for your generous contribution!");
+                        alert("Donation successful! Thank you.");
                     }
                 }
             });
         });
     });
-    </script>
+</script>
 </body>
 </html>
