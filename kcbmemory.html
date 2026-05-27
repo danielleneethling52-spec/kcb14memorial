@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Your Memory | Kyle Clayton Barnes Memorial</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN SYSTEM & TOKENS --- */
+        :root {
+            --primary-red: #cc0000;
+            --dark-red: #8b0000;
+            --pure-black: #0a0a0a;
+            --card-black: #141414;
+            --pure-white: #ffffff;
+            --text-muted: #cccccc;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--pure-black);
+            color: var(--pure-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- TYPOGRAPHY UTILITIES --- */
+        h1, h2, h3, h4 {
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            font-weight: 900;
+        }
+
+        .profound-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            text-transform: none;
+            letter-spacing: 0;
+            line-height: 1.4;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: var(--pure-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--pure-white);
+            color: var(--pure-black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(204,0,0,0.2);
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--pure-black);
+            padding: 20px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(204, 0, 0, 0.3);
+        }
+
+        .logo img {
+            height: 60px;
+            display: block;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- SPLIT HERO WRAPPER --- */
+        .split-hero-section {
+            padding: 100px 4% 80px 4%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* Narrative Column */
+        .narrative-col h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .narrative-col h1 span {
+            color: var(--primary-red);
+            display: block;
+        }
+
+        .narrative-col p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .book-notice-box {
+            background-color: rgba(204, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-red);
+            padding: 25px;
+            border-radius: 4px;
+            margin-top: 40px;
+        }
+
+        .book-notice-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--pure-white);
+        }
+
+        /* Form Processing Column */
+        .form-col {
+            background-color: var(--card-black);
+            border: 1px solid #1c1c1c;
+            border-radius: 8px;
+            padding: 45px 35px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--primary-red);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: #0d0d0d;
+            border: 1px solid #222;
+            padding: 14px;
+            border-radius: 4px;
+            color: var(--pure-white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            background-color: #141414;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 160px;
+        }
+
+        .upload-helper-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--pure-black);
+            padding: 60px 4% 40px 4%;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .footer-logo { margin-bottom: 25px; }
+        .footer-logo img { height: 80px; margin: 0 auto; object-fit: contain; }
+        .footer-tagline { font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin-bottom: 10px; }
+        .footer-sub { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; }
+
+        @media (max-width: 992px) {
+            .split-hero-section { grid-template-columns: 1fr; gap: 50px; padding-top: 60px; }
+            .narrative-col h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="history.html">KCB History</a></li>
+                <li><a href="event.html">Memorial Event</a></li>
+                <li><a href="index.html#lineup">Squad Sheet</a></li>
+                <li><a href="prizes.html">Raffles & Prizes</a></li>
+                <li><a href="kcbmemory.html" style="color: var(--primary-red);">Voice Your KCB memory</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- INTENSITY LINKED ARCHITECTURE SPLIT HERO -->
+    <main class="split-hero-section">
+        
+        <!-- LEFT NARRATIVE GRID COLUMN -->
+        <div class="narrative-col">
+            <p class="profound-quote" style="font-size: 1.5rem; color: var(--primary-red); margin-bottom: 15px;">A Legacy Written by Us.</p>
+            <h1>Have a memory with Kyle that should <span>never be forgotten?</span></h1>
+            
+            <p>
+                Stories don’t stay alive on their own—they survive because the people who stood on the touchline, shared the locker room, and lived the late nights write them down. If you have an unforgettable moment, an untold brotherhood dynamic, or a personal breakthrough moment sparked by Kyle, we need it documented right here.
+            </p>
+
+            <p>
+                Whether it is a quick locker-room joke, a fierce rugby story, or an old photo stashed away on your phone, pass it forward below. 
+            </p>
+
+            <div class="book-notice-box">
+                <h3>The Handover Memorial Book</h3>
+                <p style="font-size: 0.95rem; margin-bottom: 0; color: var(--text-muted);">
+                    Every validated story, written memory, and photo submitted through this official landing page will be compiled directly into a luxury print heirloom book. This physical compilation is being bound and prepared for a formal hand-over ceremony on August 8th straight to his children, <strong>Caylin and Caylib</strong>, ensuring they hold a permanent record of how much impact their father left behind.
+                </p>
+            </div>
+        </div>
+
+        <!-- RIGHT PROCESSING FORM COLUMN -->
+        <div class="form-col">
+            <h2 style="font-size: 1.6rem; margin-bottom: 5px;">Share Your Piece</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 30px;">Your coordinates will be indexed alongside your story inside the print layout.</p>
+            
+            <!-- FORMSPREE PRODUCTION ENDPOINT -->
+            <form action="https://formspree.io/f/meedvjkl" method="POST">
+                
+                <input type="hidden" name="_replyto" value="danielle.neethling52@gmail.com">
+                <input type="hidden" name="_subject" value="New Memorial Book Memory Submission">
+
+                <div class="form-group">
+                    <label for="author-name">Your Full Name</label>
+                    <input type="text" id="author-name" name="Contributor Name" class="form-control" placeholder="e.g., John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="author-relationship">Connection to Kyle</label>
+                    <input type="text" id="author-relationship" name="Relationship to Kyle" class="form-control" placeholder="e.g., Goodwood Teammate / Lifelong Friend" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="author-contact">Your Contact Email / Number</label>
+                    <input type="text" id="author-contact" name="Contact Details" class="form-control" placeholder="So we can verify details if necessary" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="memory-text">Your Memory / Story</label>
+                    <textarea id="memory-text" name="The Memory Story" class="form-control" placeholder="Take your time. Write the unfiltered story exactly as it happened..." required></textarea>
+                </div>
+
+                <!-- DUAL TRACK IMAGE SHARING SYSTEM -->
+                <div class="form-group" style="margin-bottom: 30px;">
+                    <label for="cloud-link">Paste Google Drive / Cloud Photo Link (Optional)</label>
+                    <input type="url" id="cloud-link" name="Photo Cloud URL Link" class="form-control" placeholder="https://drive.google.com/...">
+                    <div class="upload-helper-text">To feature photos in the print book, upload them to Google Drive, set sharing to "Anyone with the link can view", and paste the link here. Perfect for high-res files!</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem;">Submit to Memorial Book</button>
+            </form>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">
+            <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo Centered">
+        </div>
+        <p class="footer-tagline">Built on Legacy, Driven by Passion</p>
+        <p class="footer-sub">The KCB Memorial Day</p>
+    </footer>
+
+</body>
+</html>
