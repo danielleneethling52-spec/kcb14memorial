@@ -13,20 +13,17 @@ export default async function handler(req, res) {
     }
 
     try {
-
         const { amount, productName } = req.body;
 
-        const response = await fetch('https://payments.yoco.com/api/checkouts', {
+        const response = await fetch('https://online.yoco.com/v1/charges/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.YOCO_SECRET_KEY}`
+                'X-Auth-Secret-Key': process.env.YOCO_SECRET_KEY
             },
             body: JSON.stringify({
-                amount,
+                amountInCents: amount,
                 currency: 'ZAR',
-                successUrl: 'https://YOUR-VERCEL-URL.vercel.app/success.html',
-                cancelUrl: 'https://YOUR-VERCEL-URL.vercel.app/cancel.html',
                 metadata: {
                     productName
                 }
@@ -34,6 +31,8 @@ export default async function handler(req, res) {
         });
 
         const data = await response.json();
+
+        console.log('YOCO RESPONSE:', data);
 
         if (!response.ok) {
             return res.status(400).json({
@@ -43,7 +42,8 @@ export default async function handler(req, res) {
         }
 
         return res.status(200).json({
-            redirectUrl: data.redirectUrl
+            redirectUrl: data.redirectUrl || null,
+            raw: data
         });
 
     } catch (error) {
