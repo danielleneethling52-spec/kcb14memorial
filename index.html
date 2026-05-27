@@ -196,9 +196,9 @@
             height: 100%;
             top: 0;
             left: 0;
-            background-size: cover; /* Shifted to cover for main background immersion, switch back to contain if frames are strict */
+            background-size: cover; 
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: center top;
             background-color: #050505;
             opacity: 0;
             transition: opacity 1.2s ease-in-out;
@@ -852,7 +852,7 @@
                 </div>
                 <div>
                     <span class="price">R 350</span>
-                    <a href="https://pay.yoco.com/r/2wgAVn" target="_blank" class="btn btn-dark btn-merch">Purchase Jersey</a>
+                    <a href="https://pay.yoco.com/r/2wgAvn" target="_blank" class="btn btn-dark btn-merch">Purchase Jersey</a>
                 </div>
             </div>
             <div class="merch-card">
@@ -891,35 +891,49 @@
     <script>
         // --- CONFIG DATA FOR MEMORIAL ---
         const amountRaised = 0;  
-        const targetGoal = 150000; // Fixed zero structure matching display element text
+        const targetGoal = 150000;
 
         // --- AUTOPLAY BACKGROUND SLIDER ENGINE ---
-        const sliderImages = [
-            'images/WhatsApp Image 2026-03-23 at 11.25.03 AM (1).jpg',
-            'images/WhatsApp Image 2026-03-23 at 11.25.03 AM (3).jpg',
-            'images/WhatsApp Image 2026-03-23 at 11.25.05 AM (3).jpg',
-            'images/WhatsApp Image 2026-03-23 at 11.25.02 AM (2).jpg'
+        // Spaces are fully escaped into web-safe format (%20)
+        const sliderImagesBase = [
+            'WhatsApp%20Image%202026-03-23%20at%2011.25.03%20AM%20(1)',
+            'WhatsApp%20Image%202026-03-23%20at%2011.25.03%20AM%20(3)',
+            'WhatsApp%20Image%202026-03-23%20at%2011.25.05%20AM%20(3)',
+            'WhatsApp%20Image%202026-03-23%20at%2011.25.02%20AM%20(2)'
         ];
 
         const sliderContainer = document.getElementById('hero-slider');
         let currentSlide = 0;
 
-        // Render slides dynamically
-        sliderImages.forEach((imgUrl, idx) => {
+        // Fallback generator handling extension differences case structures (.jpg vs .JPG)
+        sliderImagesBase.forEach((baseName, idx) => {
             const slideDiv = document.createElement('div');
             slideDiv.classList.add('slide');
             if (idx === 0) slideDiv.classList.add('active');
-            slideDiv.style.backgroundImage = `url('${imgUrl}')`;
+            
+            // Core standard lower-case initialization path
+            const primaryUrl = `images/${baseName}.jpg`;
+            slideDiv.style.backgroundImage = `url('${primaryUrl}')`;
+            
+            // Dynamic asset verifier testing upper case structure if original fails
+            const testerImg = new Image();
+            testerImg.src = primaryUrl;
+            testerImg.onerror = function() {
+                slideDiv.style.backgroundImage = `url('images/${baseName}.JPG')`;
+            };
+            
             sliderContainer.appendChild(slideDiv);
         });
 
-        // Rotate engine loop
-        if (sliderImages.length > 1) {
+        // Loop execution rotation
+        if (sliderImagesBase.length > 1) {
             setInterval(() => {
                 const slides = document.querySelectorAll('.slide');
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
+                if (slides.length > 0) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
             }, 5000);
         }
 
