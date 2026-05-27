@@ -115,6 +115,12 @@
             transform: translateY(-3px);
         }
 
+        .btn-merch {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            margin-top: 15px;
+        }
+
         /* --- HEADER --- */
         header {
             background-color: var(--pure-black);
@@ -201,7 +207,6 @@
             opacity: 1;
         }
 
-        /* Dark overlay overlayed on the dynamic slider background */
         .hero::before {
             content: '';
             position: absolute;
@@ -295,7 +300,7 @@
             transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
         }
 
-        /* --- BIOGRAPHY / INTRO SECTION --- */
+        /* --- BIOGRAPHY / PURPOSE SECTION --- */
         .bio-section {
             padding: 100px 4%;
             max-width: 1200px;
@@ -325,6 +330,38 @@
 
         .bio-text p {
             margin-bottom: 20px;
+        }
+
+        /* --- QUICK RULES LOGISTICS BANNER --- */
+        .logistics-bar {
+            background-color: var(--pure-black);
+            border-top: 2px solid var(--primary-red);
+            border-bottom: 2px solid var(--primary-red);
+            padding: 25px 4%;
+        }
+
+        .logistics-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .log-item strong {
+            display: block;
+            color: var(--primary-red);
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .log-item span {
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
 
         /* --- LOGISTICS / TIMELINE SECTION --- */
@@ -379,73 +416,89 @@
             margin: 5px 0 10px 0;
         }
 
-        /* --- SQUAD LINEUP STYLES --- */
+        /* --- SQUAD HOLDER STYLES --- */
         .lineup-section {
-            background-color: var(--pure-white);
-            padding: 80px 4%;
+            background-color: #f9f9f9;
+            padding: 100px 4%;
             text-align: center;
-            border-top: 2px solid rgba(0,0,0,0.1);
+            border-top: 1px solid #e0e0e0;
             color: var(--pure-black);
         }
-        .lineup-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: left;
-        }
-        .squad-card {
+
+        .placeholder-squad-box {
             background-color: var(--pure-black);
             color: var(--pure-white);
-            padding: 35px;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 50px 30px;
             border-radius: 6px;
-            border-left: 5px solid var(--primary-red);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-bottom: 5px solid var(--primary-red);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
-        .squad-card h3 {
+
+        .placeholder-squad-box h3 {
             font-size: 1.8rem;
-            margin-bottom: 25px;
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-            color: var(--pure-white);
+            color: var(--primary-red);
+            margin-bottom: 15px;
         }
-        .player-list {
+
+        /* --- SPONSORSHIP SECTION --- */
+        .sponsor-section {
+            background-color: var(--pure-black);
+            padding: 100px 4%;
+            text-align: center;
+            border-top: 4px solid var(--pure-white);
+        }
+
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+        }
+
+        .sponsor-card {
+            background: linear-gradient(145deg, #141414, #0f0f0f);
+            border: 1px solid #222;
+            padding: 40px 30px;
+            border-radius: 6px;
+            text-align: left;
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .sponsor-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .sponsor-price {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary-red);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .sponsor-card ul {
             list-style: none;
+            margin-top: 15px;
         }
-        .player-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #141414;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
+
+        .sponsor-card ul li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            padding: 6px 0;
+            position: relative;
+            padding-left: 20px;
         }
-        .jersey-num {
-            background-color: var(--primary-red);
-            color: var(--pure-white);
-            width: 28px;
-            height: 28px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            margin-right: 15px;
-            font-size: 0.85rem;
+
+        .sponsor-card ul li::before {
+            content: '✓';
+            color: var(--primary-red);
+            position: absolute;
+            left: 0;
             font-weight: 900;
-        }
-        .tribute-badge {
-            background-color: var(--pure-white);
-            color: var(--pure-black);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            padding: 2px 8px;
-            border-radius: 20px;
-            margin-left: auto;
-            font-weight: 900;
-            letter-spacing: 1px;
-            animation: pulseGlow 2s infinite;
         }
 
         /* --- PRIZES SECTION --- */
@@ -453,13 +506,10 @@
             background-color: var(--pure-black);
             padding: 100px 4%;
             text-align: center;
-            border-top: 4px solid var(--pure-white);
+            border-top: 4px solid var(--primary-red);
         }
 
-        .prizes-section h2 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-        }
+        .prizes-section h2 { font-size: 3.5rem; margin-bottom: 15px; }
 
         .prizes-subtitle {
             font-size: 1.2rem;
@@ -511,20 +561,9 @@
             box-shadow: 0 15px 30px rgba(204, 0, 0, 0.15);
         }
 
-        .prize-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .prize-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .prize-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
+        .prize-card:hover::before { transform: scaleX(1); }
+        .prize-icon { font-size: 2.5rem; margin-bottom: 20px; display: inline-block; }
+        .prize-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
 
         .prize-value {
             display: block;
@@ -536,37 +575,22 @@
             letter-spacing: 0.5px;
         }
 
-        .prize-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .ticket-tier {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--pure-white);
-            display: block;
-            text-align: center;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
+        .prize-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; flex-grow: 1; }
+        .ticket-tier { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--pure-white); display: block; text-align: center; margin-bottom: 8px; font-weight: 700; }
 
         /* --- MERCHANDISE SECTION --- */
         .merch-preview {
             background-color: var(--pure-black);
             padding: 100px 4%;
-            border-top: 4px solid var(--primary-red);
+            border-top: 4px solid var(--pure-white);
             text-align: center;
         }
 
         .merch-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
             margin: 0 auto;
             text-align: left;
         }
@@ -577,11 +601,14 @@
             border-radius: 6px;
             text-align: center;
             border: 1px solid #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .merch-img-placeholder {
             background-color: #222;
-            height: 250px;
+            height: 220px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -594,23 +621,9 @@
             letter-spacing: 1px;
         }
 
-        .merch-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        .merch-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        .price {
-            display: block;
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: var(--primary-red);
-        }
+        .merch-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .merch-card p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; flex-grow: 1; }
+        .price { display: block; font-size: 1.3rem; font-weight: 900; color: var(--primary-red); margin-bottom: 5px; }
 
         /* --- FOOTER --- */
         footer {
@@ -620,41 +633,10 @@
             border-top: 1px solid #1a1a1a;
         }
 
-        .footer-logo {
-            margin-bottom: 25px;
-        }
-
-        .footer-logo img {
-            height: 80px;
-            margin: 0 auto;
-            object-fit: contain;
-        }
-
-        .footer-tagline {
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .footer-sub {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        /* --- CSS KEYFRAMES --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: scale(1); }
-            5% { transform: scale(1.05); background-color: var(--primary-red); color: white; }
-            100% { transform: scale(1); }
-        }
+        .footer-logo { margin-bottom: 25px; }
+        .footer-logo img { height: 80px; margin: 0 auto; object-fit: contain; }
+        .footer-tagline { font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin-bottom: 10px; }
+        .footer-sub { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; }
 
         /* --- RESPONSIVE FIXES --- */
         @media (max-width: 768px) {
@@ -679,18 +661,17 @@
             <ul>
                 <li><a href="#history">KCB14 History</a></li>
                 <li><a href="#event">Memorial Event</a></li>
-                <li><a href="#lineup">The Lineup</a></li>
+                <li><a href="#lineup">Squad Sheet</a></li>
+                <li><a href="#sponsorship">Sponsorship</a></li>
                 <li><a href="#prizes">Raffles & Prizes</a></li>
-                <li><a href="#items">Limited Edition Items</a></li>
+                <li><a href="#items">Voice Your KCB memory</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- HERO SECTION WITH DYNAMIC AUTOMATION SLIDER -->
     <section class="hero">
-        <div class="slider-container" id="hero-slider">
-            <!-- Images run dynamically out of background script array loops -->
-        </div>
+        <div class="slider-container" id="hero-slider"></div>
         
         <div class="hero-content">
             <h1>Kyle Clayton Barnes</h1>
@@ -699,7 +680,7 @@
             <div class="btn-group">
                 <a href="#prizes" class="btn btn-primary">Buy Raffle Tickets</a>
                 <a href="#items" class="btn btn-secondary">Buy Limited Edition Items</a>
-                <a href="#donate" class="btn btn-primary">Donate to the Fund</a>
+                <a href="#sponsorship" class="btn btn-primary">Corporate Sponsor</a>
             </div>
         </div>
     </section>
@@ -724,6 +705,30 @@
         </div>
     </section>
 
+    <!-- GROUND RULES LOGISTICS STRIP -->
+    <div class="logistics-bar">
+        <div class="logistics-grid">
+            <div class="log-item">
+                <strong>R20 / Person</strong>
+                <span>Gate Entry Fee</span>
+            </div>
+            <div class="logistics-grid">
+                <div class="log-item">
+                    <strong>R20 / Vehicle</strong>
+                    <span>Parking Fee</span>
+                </div>
+            </div>
+            <div class="log-item">
+                <strong>Strictly No Own</strong>
+                <span>Food or Drinks Allowed</span>
+            </div>
+            <div class="log-item">
+                <strong>Cash Bar & Food</strong>
+                <span>Available On Site</span>
+            </div>
+        </div>
+    </div>
+
     <!-- BIOGRAPHY / PURPOSE SECTION -->
     <section class="bio-section" id="history">
         <div class="bio-title">
@@ -732,76 +737,67 @@
         <div class="bio-text">
             <p>Kyle Clayton Barnes wasn’t just a teammate or a name on a team sheet—he was the heartbeat of our community, a force of nature on the field, and an anchor off it. His grit, unmistakable character, and unwavering passion inspired everyone who had the privilege of running alongside him.</p>
             <p>We host this memorial day not merely to look back in sorrow, but to actively carry forward the fire he brought to every minute of the game. Every ticket bought, every partnership forged, and every donation made directly protects and supports the family and legacy he left behind.</p>
-            
-            <div class="btn-group" style="justify-content: flex-start;">
-                <a href="#partner" class="btn btn-dark">Partner with Us</a>
-                <a href="#event" class="btn btn-secondary">View Memorial Event</a>
-            </div>
         </div>
     </section>
 
     <!-- LOGISTICS / TIMELINE SECTION -->
     <section class="schedule-section" id="event">
         <h2>The Memorial Event Schedule</h2>
-        <p class="section-subtitle">Honoring a champion on and off the field</p>
+        <p class="section-subtitle">Final Home Game Clash Against CPUT</p>
         
         <div class="timeline-container">
             <div class="timeline-item">
                 <div class="time-tag">11:00 AM</div>
-                <h3>Gates Open & Community Warm-up</h3>
-                <p>Arrive early to secure your spot, browse exclusive limited-edition merchandise, and enter the opening raffle tiers.</p>
+                <h3>Gates Official Open</h3>
+                <p>Gates open to the community. Secure your spot, explore the limited-edition apparel stands, and view raffle prizes early.</p>
             </div>
             <div class="timeline-item">
-                <div class="time-tag">01:30 PM</div>
-                <h3>The Memorial Tribute Match</h3>
-                <p>Our main feature match kicking off in celebration of Kyle's incredible legacy on the pitch.</p>
+                <div class="time-tag">Throughout the Day</div>
+                <h3>4 Rugby Fixtures & Kids Entertainment</h3>
+                <p>Four highly anticipated match fixtures take place back-to-back, ending in our final home stand against CPUT. Full kids entertainment zone open all day.</p>
             </div>
             <div class="timeline-item">
-                <div class="time-tag">01:38 PM</div>
-                <h3>The 8th-Minute Legacy Applause</h3>
-                <p>A coordinated, stadium-wide moment of applause to honor Kyle's definitive presence and community impact.</p>
+                <div class="time-tag">Every 8th Minute</div>
+                <h3>The 8th-Minute Tributes <span style="font-size:0.75rem; color:#888; font-weight:normal;">(Match Times Pending Confirmation)</span></h3>
+                <p>Across all 4 matches played, the referee will halt play during the 8th minute for a solemn, powerful minute of silence to honor Kyle's memory.</p>
             </div>
             <div class="timeline-item">
-                <div class="time-tag">04:30 PM</div>
-                <h3>Grand Raffle Draw & Auction closes</h3>
-                <p>Live announcement of the top prize winners on the main stage. All proceeds go directly to the memorial fund.</p>
+                <div class="time-tag">Post-Match Event</div>
+                <h3>Aftermatch Function & Prize Handover</h3>
+                <p>Join us inside the main hall directly after the final whistle for the official legacy fund handover and the grand prize raffle draws.</p>
             </div>
         </div>
     </section>
 
-    <!-- MATCH DAY LINEUP SECTION -->
+    <!-- MATCH DAY LINEUP HOLDER -->
     <section class="lineup-section" id="lineup">
-        <h2>The Commemorative Squad</h2>
-        <p class="section-subtitle" style="color: var(--primary-red);">1st Team Lineup | Running for the Legacy</p>
-        
-        <div class="lineup-grid">
-            <!-- Forward Pack Card -->
-            <div class="squad-card">
-                <h3>The Forwards</h3>
-                <ul class="player-list">
-                    <li><span class="jersey-num">1</span> Loosehead Prop</li>
-                    <li><span class="jersey-num">2</span> Hooker</li>
-                    <li><span class="jersey-num">3</span> Tighthead Prop</li>
-                    <li><span class="jersey-num">4</span> Lock</li>
-                    <li><span class="jersey-num">5</span> Lock</li>
-                    <li><span class="jersey-num">6</span> Blindside Flanker</li>
-                    <li><span class="jersey-num">7</span> Openside Flanker</li>
-                    <li><span class="jersey-num">8</span> Number 8 <span class="tribute-badge">Kyle's Jersey</span></li>
-                </ul>
-            </div>
+        <h2>Match Day Squad Sheets</h2>
+        <p class="section-subtitle" style="color: var(--primary-red); margin-bottom: 40px;">Commemorative Selection Lists</p>
+        <div class="placeholder-squad-box">
+            <h3>Squad Selection In Progress</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 500px; margin: 0 auto;">Official team sheets for the 4 commemorative fixtures are being finalized. Check back soon to see the full line-ups tracking out on game day.</p>
+        </div>
+    </section>
 
-            <!-- Backline Card -->
-            <div class="squad-card">
-                <h3>The Backs</h3>
-                <ul class="player-list">
-                    <li><span class="jersey-num">9</span> Scrum-half</li>
-                    <li><span class="jersey-num">10</span> Fly-half</li>
-                    <li><span class="jersey-num">11</span> Left Wing</li>
-                    <li><span class="jersey-num">12</span> Inside Centre</li>
-                    <li><span class="jersey-num">13</span> Outside Centre</li>
-                    <li><span class="jersey-num">14</span> Right Wing <span class="tribute-badge">KCB14</span></li>
-                    <li><span class="jersey-num">15</span> Fullback</li>
+    <!-- CORPORATE MINUTE OF SILENCE SPONSORSHIP SECTION -->
+    <section class="sponsor-section" id="sponsorship">
+        <h2 style="font-size: 3rem;">8th-Minute Tribute Sponsorship</h2>
+        <p class="prizes-subtitle" style="color: var(--text-muted); margin-bottom: 20px;">Corporate Partnership Framework</p>
+        <p style="max-width: 800px; margin: 0 auto 50px auto; color: var(--text-muted);">We are inviting four select corporate partners to purchase and dedicate one of the day's four scheduled minutes of silence. Secure massive branding exposure while fundamentally anchoring Kyle's family legacy fund.</p>
+        
+        <div class="sponsor-grid">
+            <div class="sponsor-card">
+                <h3>Minute of Silence Sponsor</h3>
+                <span class="sponsor-price">R 3,000 <span style="font-size:0.9rem; color:#888; font-weight:normal;">/ Match</span></span>
+                <p style="color: var(--text-muted); font-size:0.9rem;">Own a definitive, high-impact moment of honor during one of the day's four live rugby fixtures.</p>
+                <ul>
+                    <li>Official PA announcement: "This Minute of Silence is proudly brought to you by [Your Company Name]"</li>
+                    <li>Full high-exposure logo placement in the Day's Official Digital Programme</li>
+                    <li>Prominent digital placement on the Main KCB Memorial Site</li>
+                    <li>Dedicated sponsor recognition on the Official Club Website</li>
+                    <li>Full on-site event day visual exposure and visibility</li>
                 </ul>
+                <a href="mailto:info@empresscreations.co.za?subject=KCB14%20Minute%20of%20Silence%20Sponsorship" class="btn btn-dark">Secure a Minute</a>
             </div>
         </div>
     </section>
@@ -858,26 +854,46 @@
 
     <!-- MERCHANDISE SECTION -->
     <section class="merch-preview" id="items">
-        <h2 style="color: var(--pure-white);">Limited Edition Legacy Kits</h2>
+        <h2 style="color: var(--pure-white);">Voice Your KCB Memory</h2>
         <p class="prizes-subtitle" style="color: var(--text-muted); margin-bottom: 60px;">Exclusive releases available only for this memorial frame</p>
         
         <div class="merch-grid">
+            <!-- Jersey -->
             <div class="merch-card">
-                <div class="merch-img-placeholder">[ Custom Jersey Asset ]</div>
-                <h3>The KCB14 Commemorative Jersey</h3>
-                <p>Premium, high-performance fit featuring original detailing and custom tracking elements.</p>
-                <span class="price">R 650</span>
+                <div>
+                    <div class="merch-img-placeholder">[ Custom Jersey Asset ]</div>
+                    <h3>The KCB14 Commemorative Jersey</h3>
+                    <p>Premium, high-performance fit featuring original custom detailing and tracking elements.</p>
+                </div>
+                <div>
+                    <span class="price">R 350</span>
+                    <a href="#" class="btn btn-dark btn-merch">Purchase Jersey</a>
+                </div>
             </div>
+            <!-- Cap -->
             <div class="merch-card">
-                <div class="merch-img-placeholder">[ Heritage Cap Asset ]</div>
-                <h3>Legacy Snapback Cap</h3>
-                <p>Classic structured fit with precision embroidery celebrating the spirit of our anchor player.</p>
-                <span class="price">R 250</span>
+                <div>
+                    <div class="merch-img-placeholder">[ Heritage Cap Asset ]</div>
+                    <h3>Legacy Snapback Cap</h3>
+                    <p>Classic structured fit with precision embroidery celebrating the spirit of our anchor player.</p>
+                </div>
+                <div>
+                    <span class="price">R 250</span>
+                    <a href="#" class="btn btn-dark btn-merch">Purchase Cap</a>
+                </div>
             </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 50px;" id="partner">
-            <a href="#" class="btn btn-primary">Secure Your Merchandise</a>
+            <!-- Keyring -->
+            <div class="merch-card">
+                <div>
+                    <div class="merch-img-placeholder">[ Custom Keyring Asset ]</div>
+                    <h3>KCB14 Memorial Keyring</h3>
+                    <p>High-durability cast-metal commemorative tracking tag to take his legacy wherever you travel.</p>
+                </div>
+                <div>
+                    <span class="price">R 100</span>
+                    <a href="#" class="btn btn-dark btn-merch">Purchase Keyring</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -909,7 +925,6 @@
         function initSlider() {
             const container = document.getElementById('hero-slider');
             
-            // Generate the DOM slide wrappers
             sliderImages.forEach((imgSrc, index) => {
                 const slide = document.createElement('div');
                 slide.className = `slide${index === 0 ? ' active' : ''}`;
@@ -917,15 +932,15 @@
                 container.appendChild(slide);
             });
 
-            // Set up infinite structural looping intervals
             let currentSlide = 0;
             const slides = document.querySelectorAll('.slide');
             
             setInterval(() => {
+                if(slides.length === 0) return;
                 slides[currentSlide].classList.remove('active');
                 currentSlide = (currentSlide + 1) % slides.length;
                 slides[currentSlide].classList.add('active');
-            }, 4500); // Transitions safely every 4.5 seconds
+            }, 4500);
         }
 
         function initializeTracker() {
@@ -939,7 +954,6 @@
             }, 200);
         }
 
-        // Orchestrate scripts on layout completion
         window.addEventListener('DOMContentLoaded', () => {
             initSlider();
             initializeTracker();
