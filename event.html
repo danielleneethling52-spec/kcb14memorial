@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial Day Details | Kyle Clayton Barnes Tribute</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- DESIGN SYSTEM & TOKENS --- */
+        :root {
+            --primary-red: #cc0000;
+            --dark-red: #8b0000;
+            --pure-black: #0a0a0a;
+            --card-black: #141414;
+            --pure-white: #ffffff;
+            --text-muted: #cccccc;
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--pure-black);
+            color: var(--pure-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- TYPOGRAPHY UTILITIES --- */
+        h1, h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            font-weight: 900;
+        }
+
+        .profound-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            text-transform: none;
+            letter-spacing: 0;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: var(--pure-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--pure-white);
+            color: var(--pure-black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(204,0,0,0.2);
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--pure-black);
+            padding: 20px 4%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(204, 0, 0, 0.3);
+        }
+
+        .logo img {
+            height: 60px;
+            display: block;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--pure-white);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* --- INNER PAGE HERO --- */
+        .inner-hero {
+            position: relative;
+            padding: 120px 4% 80px 4%;
+            background: linear-gradient(180deg, #000000 0%, var(--dark-red) 100%);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-red);
+        }
+
+        .inner-hero h1 {
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .inner-hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* --- EVENT DETAILS CONTENT LAYOUT --- */
+        .event-wrap {
+            padding: 80px 4%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .event-body {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        .event-body p {
+            margin-bottom: 25px;
+        }
+
+        .event-body h2 {
+            color: var(--primary-red);
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+        }
+
+        /* --- CALLOUT BOX --- */
+        .tribute-callout {
+            background-color: rgba(204, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-red);
+            padding: 25px;
+            border-radius: 0 6px 6px 0;
+            margin: 35px 0;
+        }
+
+        .tribute-callout h3 {
+            font-size: 1.3rem;
+            color: var(--pure-white);
+            margin-bottom: 10px;
+        }
+
+        /* --- SIDEBAR EVENT METRICS --- */
+        .event-sidebar {
+            background-color: var(--card-black);
+            border: 1px solid #1a1a1a;
+            padding: 30px;
+            border-radius: 6px;
+            height: fit-content;
+            border-top: 4px solid var(--primary-red);
+            position: sticky;
+            top: 120px;
+        }
+
+        .event-sidebar h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+
+        .meta-item {
+            margin-bottom: 25px;
+        }
+
+        .meta-item label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--primary-red);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .meta-item span {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--pure-white);
+            display: block;
+        }
+
+        .meta-item small {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        /* --- COMING SOON TIMELINE LAYOUT --- */
+        .timeline-section {
+            background-color: var(--card-black);
+            padding: 60px 5%;
+            border-radius: 8px;
+            margin-top: 40px;
+            border: 1px solid #1a1a1a;
+            text-align: center;
+        }
+
+        .timeline-section h2 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+        }
+
+        .timeline-hold-card {
+            max-width: 700px;
+            margin: 0 auto;
+            border: 2px dashed #333;
+            padding: 40px 30px;
+            border-radius: 6px;
+        }
+
+        .badge-locked {
+            display: inline-block;
+            background-color: var(--primary-red);
+            color: var(--pure-white);
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        .timeline-hold-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--pure-black);
+            padding: 60px 4% 40px 4%;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .footer-logo { margin-bottom: 25px; }
+        .footer-logo img { height: 80px; margin: 0 auto; object-fit: contain; }
+        .footer-tagline { font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin-bottom: 10px; }
+        .footer-sub { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; }
+
+        @media (max-width: 768px) {
+            .inner-hero h1 { font-size: 2.8rem; }
+            .event-grid { grid-template-columns: 1fr; gap: 40px; }
+            .event-sidebar { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="history.html">KCB History</a></li>
+                <li><a href="index.html#lineup">Squad Sheet</a></li>
+                <li><a href="index.html#sponsorship">Sponsorship</a></li>
+                <li><a href="index.html#prizes">Raffles & Prizes</a></li>
+                <li><a href="index.html#items">Voice Your KCB memory</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- INNER PAGE HERO -->
+    <section class="inner-hero">
+        <h1>The Memorial Day</h1>
+        <p>Celebrating 8 years of life, brotherhood, and rugby. Playing for Kyle and his beautiful children.</p>
+    </section>
+
+    <!-- MAIN EVENT DETAILS LAYOUT -->
+    <main class="event-wrap">
+        
+        <div class="event-grid">
+            <!-- LEFT COLUMN: NARRATIVE & BACKSTORY -->
+            <div class="event-body">
+                <p class="profound-quote" style="font-size: 1.4rem; color: var(--primary-red); margin-bottom: 30px; line-height: 1.4;">
+                    "He gave his life to the sport he loved. Now, we stand line-to-line to safeguard his family."
+                </p>
+                
+                <p>Kyle was an absolute pillar of our First Team for a number of years—a naturally loving, courageous guy who played with a ferocious heart and left everything on the field. Eight years ago, a tragic rugby injury stole Kyle from us, leaving a massive void in our club family and, most importantly, the lives of his precious children.</p>
+                
+                <p>As we mark 8 years of life and rugby without him, we refuse to let heartbreak define his legacy. Instead, we are gathering our community for an monumental Memorial Day to celebrate his life and raise concrete financial support for his kids. This isn't just another fixture; it's a stand of unwavering brotherhood.</p>
+
+                <div class="tribute-callout">
+                    <h3>The 8th Minute Tribute</h3>
+                    <p>To commemorate 8 years since Kyle’s passing, our final home league match will feature a dedicated moment of honor. In the 8th minute of the 1st Team game, the entire stadium will rise to applaud his enduring contribution to our crest. Be in the stands early—you do not want to miss this moment.</p>
+                </div>
+
+                <h2>The Final Battle: Standing Together</h2>
+                <p>The stage could not be more fitting. This memorial takes place during our final home league match of the season against <strong>CPUT</strong>. It’s going to be an intense, high-stakes encounter on the pitch—exactly the kind of relentless, hard-hitting rugby Kyle thrived on.</p>
+                
+                <p>Every ticket sold, every roar from the stands, and every contribution made throughout the day will go directly toward a secure legacy fund dedicated to supporting Kyle's children. We invite all old boys, community members, and local supporters to pack the stands, wear your club colors with pride, and show his family that they will never walk alone.</p>
+            </div>
+
+            <!-- RIGHT COLUMN: STICKY MATCH METRICS -->
+            <aside class="event-sidebar">
+                <h3>Fixture Overview</h3>
+                
+                <div class="meta-item">
+                    <label>Date</label>
+                    <span>Saturday, 8 August</span>
+                    <small>Final League Home Game</small>
+                </div>
+
+                <div class="meta-item">
+                    <label>The Matchup</label>
+                    <span>1st Team vs CPUT</span>
+                    <small>A high-stakes season finale</small>
+                </div>
+
+                <div class="meta-item">
+                    <label>Main Beneficiaries</label>
+                    <span>The Barnes Children</span>
+                    <small>All proceeds actively allocated</small>
+                </div>
+
+                <div class="meta-item">
+                    <label>Special Observance</label>
+                    <span>8th Minute Ground Tribute</span>
+                    <small>Signifying 8 years of legacy</small>
+                </div>
+            </aside>
+        </div>
+
+        <!-- SCHEDULE OF THE DAY (PARKED / COMING SOON) -->
+        <section class="timeline-section">
+            <h2>Match Day Schedule</h2>
+            <div class="timeline-hold-card">
+                <div class="badge-locked">TBC</div>
+                <p style="text-transform: uppercase; font-weight: 700; color: var(--primary-red); letter-spacing: 1px; margin-bottom: 10px;">Official Times Coming Soon</p>
+                <p>We are currently finalizing precise kickoff times with match officials and CPUT for the day's full tier order (including curtain raisers and lower team structures). Check back shortly for the finalized run-of-play timeline.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">
+            <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo Centered">
+        </div>
+        <p class="footer-tagline">Built on Legacy, Driven by Passion</p>
+        <p class="footer-sub">The KCB Memorial Day</p>
+    </footer>
+
+</body>
+</html>
