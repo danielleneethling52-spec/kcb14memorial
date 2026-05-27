@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +5,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
 
     <style>
-
-        /* --- DESIGN SYSTEM & TOKENS --- */
         :root {
             --primary-red: #cc0000;
             --dark-red: #8b0000;
@@ -41,89 +36,7 @@
             line-height: 1.6;
         }
 
-        /* --- TYPOGRAPHY UTILITIES --- */
-        h1, h2, h3 {
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            font-weight: 900;
-        }
-
-        .profound-quote {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            text-transform: none;
-            letter-spacing: 0;
-        }
-
-        /* --- BUTTONS --- */
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 25px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            border-radius: 4px;
-            transition: var(--transition-smooth);
-            cursor: pointer;
-            border: 2px solid transparent;
-            text-align: center;
-        }
-
-        .btn-primary {
-            background-color: var(--pure-white);
-            color: var(--pure-black);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--pure-black);
-            color: var(--pure-white);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            border-color: var(--pure-white);
-            color: var(--pure-white);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--pure-white);
-            color: var(--pure-black);
-            transform: translateY(-3px);
-        }
-
-        .btn-dark {
-            background-color: var(--pure-black);
-            color: var(--pure-white);
-            border: 2px solid var(--primary-red);
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .btn-dark:hover {
-            background-color: var(--primary-red);
-            border-color: var(--pure-white);
-            transform: translateY(-3px);
-        }
-
-        .btn-merch {
-            padding: 10px 20px;
-            font-size: 0.8rem;
-            margin-top: 15px;
-        }
-
-        /* --- HEADER --- */
+        /* ================= HEADER ================= */
         header {
             background-color: var(--pure-black);
             padding: 20px 4%;
@@ -138,8 +51,6 @@
 
         .logo img {
             height: 60px;
-            display: block;
-            object-fit: contain;
         }
 
         nav ul {
@@ -154,28 +65,9 @@
             font-weight: 700;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: var(--transition-smooth);
-            position: relative;
-            padding: 5px 0;
         }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-red);
-            transition: var(--transition-smooth);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* --- HERO --- */
+        /* ================= HERO ================= */
         .hero {
             position: relative;
             height: 85vh;
@@ -185,21 +77,15 @@
         }
 
         .slider-container {
+            position: absolute;
             width: 100%;
             height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
         }
 
         .slide {
             position: absolute;
             width: 100%;
             height: 100%;
-            top: 0;
-            left: 0;
-            background-color: #050505;
             opacity: 0;
             transition: opacity 1.2s ease-in-out;
             background-size: cover;
@@ -213,500 +99,43 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.8));
+            inset: 0;
+            background: rgba(0,0,0,0.6);
             z-index: 2;
-            pointer-events: none;
         }
 
         .hero-content {
             position: relative;
             z-index: 10;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            height: 100%;
             text-align: center;
             padding: 0 20px;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
-        .hero-content h1 {
-            font-size: 4.5rem;
-            line-height: 1;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-        }
-
-        .hero-content p {
-            font-size: 1.6rem;
-            max-width: 750px;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        /* --- DONATION TRACKER --- */
-        .tracker-section {
-            background-color: var(--pure-black);
-            padding: 60px 4%;
-            border-bottom: 4px solid var(--pure-white);
-            text-align: center;
-        }
-
-        .tracker-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: var(--card-black);
-            border: 1px solid #222;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .tracker-title {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .tracker-metrics {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .metric-raised {
-            color: var(--primary-red);
-            font-size: 2rem;
-            font-weight: 900;
-        }
-
-        .metric-goal {
-            color: var(--text-muted);
-            padding-top: 10px;
-        }
-
-        .progress-bar-bg {
-            background-color: #222;
-            height: 24px;
-            border-radius: 12px;
-            width: 100%;
-            overflow: hidden;
-            margin-bottom: 15px;
-            border: 1px solid #333;
-        }
-
-        .progress-bar-fill {
-            background: linear-gradient(90deg, var(--dark-red), var(--primary-red));
-            height: 100%;
-            width: 0%;
-            border-radius: 12px;
-            transition: width 1.5s cubic-bezier(0.1, 1, 0.1, 1);
-        }
-
-        /* --- BIO SECTION --- */
-        .bio-section {
-            padding: 100px 4%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .bio-title h2 {
-            font-size: 3rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .bio-title .accent-word {
-            display: block;
-            color: var(--pure-black);
-            font-size: 4rem;
-        }
-
-        .bio-text {
-            font-size: 1.1rem;
-        }
-
-        .bio-text p {
-            margin-bottom: 20px;
-        }
-
-        /* --- LOGISTICS --- */
-        .logistics-bar {
-            background-color: var(--pure-black);
-            border-top: 2px solid var(--primary-red);
-            border-bottom: 2px solid var(--primary-red);
-            padding: 25px 4%;
-        }
-
-        .logistics-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            text-align: center;
-        }
-
-        .log-item strong {
-            display: block;
-            color: var(--primary-red);
-            font-size: 1.3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .log-item span {
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
-        /* --- SCHEDULE --- */
-        .schedule-section {
-            background-color: var(--pure-white);
-            color: var(--pure-black);
-            padding: 100px 4%;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--primary-red);
-            letter-spacing: 1px;
-            margin-bottom: 50px;
-        }
-
-        .timeline-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: left;
-            border-left: 4px solid var(--pure-black);
-            padding-left: 30px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -39px;
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background-color: var(--primary-red);
-            border: 4px solid var(--pure-white);
-        }
-
-        .time-tag {
-            font-weight: 900;
-            color: var(--primary-red);
-            font-size: 0.9rem;
-        }
-
-        .timeline-item h3 {
-            font-size: 1.4rem;
-            margin: 5px 0 10px 0;
-        }
-
-        /* --- LINEUP --- */
-        .lineup-section {
-            background-color: #f9f9f9;
-            padding: 100px 4%;
-            text-align: center;
-            border-top: 1px solid #e0e0e0;
-            color: var(--pure-black);
-        }
-
-        .placeholder-squad-box {
-            background-color: var(--pure-black);
-            color: var(--pure-white);
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 50px 30px;
-            border-radius: 6px;
-            border-bottom: 5px solid var(--primary-red);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        .placeholder-squad-box h3 {
-            font-size: 1.8rem;
-            color: var(--primary-red);
-            margin-bottom: 15px;
-        }
-
-        /* --- SPONSOR --- */
-        .sponsor-section {
-            background-color: var(--pure-black);
-            padding: 100px 4%;
-            text-align: center;
-            border-top: 4px solid var(--pure-white);
-        }
-
-        .sponsor-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 40px auto 0 auto;
-        }
-
-        .sponsor-card {
-            background: linear-gradient(145deg, #141414, #0f0f0f);
-            border: 1px solid #222;
-            padding: 40px 30px;
-            border-radius: 6px;
-            text-align: left;
-            border-left: 4px solid var(--primary-red);
-        }
-
-        .sponsor-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-
-        .sponsor-price {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--primary-red);
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .sponsor-card ul {
-            list-style: none;
-            margin-top: 15px;
-        }
-
-        .sponsor-card ul li {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            padding: 6px 0;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .sponsor-card ul li::before {
-            content: '✓';
-            color: var(--primary-red);
-            position: absolute;
-            left: 0;
-            font-weight: 900;
-        }
-
-        /* --- PRIZES --- */
-        .prizes-section {
-            background-color: var(--pure-black);
-            padding: 100px 4%;
-            text-align: center;
-            border-top: 4px solid var(--primary-red);
-        }
-
-        .prizes-section h2 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-        }
-
-        .prizes-subtitle {
-            font-size: 1.2rem;
-            color: var(--primary-red);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 60px;
-        }
-
-        .prizes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .prize-card {
-            background-color: var(--card-black);
-            border: 1px solid #222;
-            padding: 40px 30px;
-            border-radius: 6px;
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .prize-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-red);
-            box-shadow: 0 15px 30px rgba(204, 0, 0, 0.15);
-        }
-
-        .prize-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .prize-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .prize-value {
-            display: block;
-            color: var(--primary-red);
-            font-weight: 900;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .ticket-tier {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: block;
-            text-align: center;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        /* --- MERCH --- */
-        .merch-preview {
-            background-color: var(--pure-black);
-            padding: 100px 4%;
-            border-top: 4px solid var(--pure-white);
-            text-align: center;
-        }
-
-        .merch-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
-            align-items: stretch;
-        }
-
-        .merch-card {
-            background-color: var(--card-black);
-            padding: 25px;
-            border-radius: 6px;
-            text-align: center;
-            border: 1px solid #1a1a1a;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
-
-        .merch-image {
-            width: 100%;
-            height: 250px;
-            object-fit: contain;
-            background-color: #111;
-            border-radius: 6px;
-            padding: 10px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .price {
-            display: block;
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: var(--primary-red);
-            margin-bottom: 5px;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--pure-black);
-            padding: 60px 4% 40px 4%;
-            text-align: center;
-            border-top: 1px solid #1a1a1a;
-        }
-
-        .footer-logo img {
-            height: 80px;
-            margin: 0 auto;
-            object-fit: contain;
-        }
-
-        .footer-tagline {
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .footer-sub {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-        }
-
-        /* --- MOBILE RESPONSIVE --- */
+        /* ================= MOBILE FIX (NOW INSIDE STYLE) ================= */
         @media (max-width: 768px) {
 
             header {
                 flex-direction: column;
-                padding: 15px 5%;
                 gap: 15px;
+                padding: 15px 5%;
             }
 
             .logo img {
                 height: 50px;
             }
 
-            nav {
-                width: 100%;
-            }
-
             nav ul {
                 flex-direction: column;
                 gap: 12px;
                 align-items: center;
-                text-align: center;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            .hero {
-                height: auto;
-                min-height: 85vh;
-            }
-
-            .hero-content {
-                padding: 100px 20px 60px;
             }
 
             .hero-content h1 {
                 font-size: 2.5rem;
-                line-height: 1.1;
             }
 
             .hero-content p {
@@ -715,49 +144,12 @@
 
             .btn-group {
                 flex-direction: column;
-                width: 100%;
                 align-items: center;
             }
 
             .btn {
                 width: 100%;
                 max-width: 320px;
-            }
-
-            .bio-section {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .bio-title h2 {
-                font-size: 2.2rem;
-            }
-
-            .bio-title .accent-word {
-                font-size: 2.8rem;
-            }
-
-            .tracker-metrics {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .timeline-container {
-                padding-left: 20px;
-            }
-
-            .timeline-item::before {
-                left: -29px;
-            }
-
-            .prizes-section h2,
-            .sponsor-section h2 {
-                font-size: 2.2rem;
-            }
-
-            .merch-image {
-                height: 220px;
             }
         }
 
