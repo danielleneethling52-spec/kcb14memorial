@@ -239,7 +239,7 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             align-items: stretch;
         }
@@ -313,35 +313,101 @@
             font-weight: 700;
         }
 
-        /* --- EFT DONATION BLOCK --- */
-        .eft-block {
-            background: linear-gradient(135deg, #111 0%, var(--card-black) 100%);
-            border: 1px solid #222;
-            padding: 50px;
-            border-radius: 8px;
-            margin-top: 60px;
+        /* --- INTEGRATED FORM & EFT SECTION --- */
+        .int-section {
+            padding: 80px 4%;
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            border-top: 1px solid #1a1a1a;
         }
 
-        .eft-info h3 {
+        /* FORM STYLING */
+        .form-wrap h2 {
             font-size: 2rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+        }
+
+        .form-wrap p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--primary-red);
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--card-black);
+            border: 1px solid #222;
+            padding: 14px;
+            border-radius: 4px;
+            color: var(--pure-white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            background-color: #1a1a1a;
+        }
+
+        select.form-control {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='%23cc0000'><polygon points='0,0 10,0 5,5'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* RIGHT-COLUMN DETAILS */
+        .eft-block-v2 {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
         .bank-details {
-            background-color: #080808;
-            padding: 25px;
+            background-color: var(--card-black);
+            padding: 30px;
             border-radius: 6px;
             border: 1px solid #1a1a1a;
             font-family: monospace;
             font-size: 1.05rem;
         }
 
+        .bank-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+        }
+
         .bank-line {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
         }
@@ -370,12 +436,12 @@
 
         @media (max-width: 992px) {
             .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+            .int-section { grid-template-columns: 1fr; gap: 50px; }
         }
 
         @media (max-width: 768px) {
             .inner-hero h1 { font-size: 2.8rem; }
-            .objectives-grid, .eft-block { grid-template-columns: 1fr; gap: 30px; }
-            .eft-block { padding: 30px; }
+            .objectives-grid { grid-template-columns: 1fr; gap: 30px; }
         }
     </style>
 </head>
@@ -462,10 +528,10 @@
                         <li>Permanent recognition grid placement on our website</li>
                     </ul>
                 </div>
-                <a href="mailto:sponsorship@yourclub.co.za?subject=Merchandise Tier Sponsorship" class="btn btn-secondary">Select Package</a>
+                <a href="#outreach-form" class="btn btn-secondary">Select Package</a>
             </div>
 
-            <!-- New Tier 2: Bring Kyle's Kids Home -->
+            <!-- Tier 2: Bring Kyle's Kids Home -->
             <div class="price-card">
                 <div>
                     <h3>Legacy Family Host</h3>
@@ -477,7 +543,7 @@
                         <li>Official memorial web platform logo index placement</li>
                     </ul>
                 </div>
-                <a href="mailto:sponsorship@yourclub.co.za?subject=Legacy Family Host Sponsorship" class="btn btn-secondary">Select Package</a>
+                <a href="#outreach-form" class="btn btn-secondary">Select Package</a>
             </div>
 
             <!-- Tier 3: Minute of Silence (FEATURED) -->
@@ -493,26 +559,99 @@
                         <li>Top-tier logo footprint on the official memorial website</li>
                     </ul>
                 </div>
-                <a href="mailto:sponsorship@yourclub.co.za?subject=Tribute Minute Sponsorship" class="btn btn-primary">Secure Minute</a>
+                <a href="#outreach-form" class="btn btn-primary">Secure Minute</a>
+            </div>
+
+            <!-- Tier 4: Sponsor a Prize or Service Card -->
+            <div class="price-card" style="border: 1px dashed var(--primary-red); background-color: rgba(204, 0, 0, 0.02);">
+                <div>
+                    <h3>Sponsor a Prize or Service</h3>
+                    <div class="price-amt" style="font-size: 1.8rem; margin-bottom: 25px;">Value In-Kind</div>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;">We welcome businesses and individuals donating tangible assets or professional resources rather than direct funding to make the day legendary.</p>
+                    <ul class="price-features">
+                        <li>High-end items for charity auctions or big-prize raffles</li>
+                        <li>Professional match day media execution support</li>
+                        <li>Full digital programme and web platform exposure loops</li>
+                    </ul>
+                </div>
+                <a href="#outreach-form" class="btn btn-secondary" style="border-color: var(--primary-red); color: var(--primary-red);">Offer Service</a>
             </div>
 
         </div>
 
-        <!-- CUSTOM EFT BLOCK -->
-        <div class="eft-block">
-            <div class="eft-info">
-                <h3>Custom Contributions & EFT Donations</h3>
-                <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 20px;">If your business wishes to back the children’s legacy trust fund with a direct, custom financial donation outside of our standard advertising matrix, you can securely process funds straight via electronic transfer.</p>
-                <p style="font-size: 0.9rem; color: var(--primary-red); font-weight: 700;">*Please use your company name or name + KCB14 as the payment reference code.</p>
-            </div>
+        <!-- INTEGRATED FORM & BANKING CONTAINER -->
+        <div class="int-section" id="outreach-form">
             
-            <div class="bank-details">
-                <div class="bank-line"><label>Bank</label><span>First National Bank (FNB)</span></div>
-                <div class="bank-line"><label>Account Name</label><span>KCB Memorial Fund</span></div>
-                <div class="bank-line"><label>Account No</label><span>62910485721</span></div>
-                <div class="bank-line"><label>Branch Code</label><span>250655</span></div>
-                <div class="bank-line"><label>Reference</label><span>YOUR NAME / CO + KCB14</span></div>
+            <!-- LEFT COLUMN: FRONT-END SECURE FORM WITH FORMSPREE ENDPOINT -->
+            <div class="form-wrap">
+                <h2>Partner With Us</h2>
+                <p>Submit your operational details below to lock in a tier package or pledge your specialized services.</p>
+                
+                <form action="https://formspree.io/f/xaqkaweq" method="POST">
+                    
+                    <!-- Formspree internal settings tracking -->
+                    <input type="hidden" name="_replyto" value="danielle.neethling52@gmail.com">
+                    <input type="hidden" name="_subject" value="New KCB14 Memorial Sponsorship Submission">
+
+                    <div class="form-group">
+                        <label for="company">Company Name</label>
+                        <input type="text" id="company" name="Company Name" class="form-control" placeholder="e.g., Empress Creations" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact Person</label>
+                        <input type="text" id="contact" name="Contact Name" class="form-control" placeholder="Full Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="Email" class="form-control" placeholder="name@company.co.za" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Contact Number</label>
+                        <input type="tel" id="phone" name="Phone Number" class="form-control" placeholder="e.g., 082 123 4567" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assist">How would you like to assist?</label>
+                        <select id="assist" name="Assistance Type" class="form-control" required>
+                            <option value="" disabled selected>Select an option...</option>
+                            <option value="Merchandise Logo Tier (R1,500)">Merchandise Logo Tier (R1,500)</option>
+                            <option value="Legacy Family Host Tier (R2,000)">Legacy Family Host Tier (R2,000)</option>
+                            <option value="The Tribute Minute Tier (R3,000)">The Tribute Minute Tier (R3,000)</option>
+                            <option value="DJ Service Sponsoring">DJ</option>
+                            <option value="Photographer Service Sponsoring">Photographer</option>
+                            <option value="Auction / Raffle Items Donation">Auction/Raffle Items</option>
+                            <option value="Custom Request">Custom Request</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="info">Additional Information</label>
+                        <textarea id="info" name="Extra Information" class="form-control" placeholder="Provide extra context regarding package requirements or service asset structures..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem;">Submit Sponsorship Pledge</button>
+                </form>
             </div>
+
+            <!-- RIGHT COLUMN: FINANCIAL DETAILS FOR STRAIGHT TRANSFER -->
+            <div class="eft-block-v2">
+                <div class="bank-details">
+                    <div class="bank-title">Direct Trust EFT Account</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; font-family: 'Montserrat', sans-serif;">If you are backing the fund with a custom donation bracket outside standard advertising grids, clear transactions directly to this secure folder layout:</p>
+                    
+                    <div class="bank-line"><label>Bank</label><span>First National Bank (FNB)</span></div>
+                    <div class="bank-line"><label>Account Name</label><span>KCB Memorial Fund</span></div>
+                    <div class="bank-line"><label>Account No</label><span>62910485721</span></div>
+                    <div class="bank-line"><label>Branch Code</label><span>250655</span></div>
+                    <div class="bank-line"><label>Reference</label><span>NAME / CO + KCB14</span></div>
+                    
+                    <p style="font-size: 0.75rem; color: var(--primary-red); font-weight: 700; margin-top: 20px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;">*Please submit your deposit notification via our form structure to log your listing assets.</p>
+                </div>
+            </div>
+
         </div>
 
     </section>
