@@ -6,7 +6,100 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
-    
+ /* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        padding: 15px 5%;
+        gap: 15px;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        text-align: center;
+    }
+
+    nav a {
+        font-size: 0.8rem;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 85vh;
+    }
+
+    .hero-content {
+        padding: 100px 20px 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .bio-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .bio-title h2 {
+        font-size: 2.2rem;
+    }
+
+    .bio-title .accent-word {
+        font-size: 2.8rem;
+    }
+
+    .tracker-metrics {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .timeline-container {
+        padding-left: 20px;
+    }
+
+    .timeline-item::before {
+        left: -29px;
+    }
+
+    .prizes-section h2,
+    .sponsor-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .merch-image {
+        height: 220px;
+    }
+
+}   
 
     
     <style>
