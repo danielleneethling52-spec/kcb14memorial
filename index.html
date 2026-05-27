@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     
+    <!-- Include the Official Yoco Web SDK Layer -->
+    <script src="https://js.yoco.com/v1/sdk.js"></script>
+    
     <style>
         /* --- DESIGN SYSTEM & TOKENS --- */
         :root {
@@ -199,6 +202,8 @@
             background-color: #050505;
             opacity: 0;
             transition: opacity 1.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
         }
 
         .slide.active {
@@ -785,7 +790,8 @@
                     <li>Dedicated sponsor recognition on the Official Club Website</li>
                     <li>Full on-site event day visual exposure and visibility</li>
                 </ul>
-                <a href="https://pay.yoco.com/r/2BGjaB" target="_blank" class="btn btn-dark">Secure a Minute</a>
+                <!-- Changed to button with data items. 3000 ZAR = 300000 Cents -->
+                <button type="button" class="btn btn-dark yoco-checkout-btn" data-amount="300000" data-name="Minute of Silence Sponsor">Secure a Minute</button>
             </div>
         </div>
     </section>
@@ -804,7 +810,7 @@
                 </div>
                 <div>
                     <span class="ticket-tier">R150 Per Ticket</span>
-                    <a href="https://pay.yoco.com/r/2wgAVo" target="_blank" class="btn btn-dark" style="margin-top:0;">Get Tickets</a>
+                    <button type="button" class="btn btn-dark yoco-checkout-btn" data-amount="15000" data-name="Raffle Ticket: Weekend Away for 2">Get Tickets</button>
                 </div>
             </div>
 
@@ -817,7 +823,7 @@
                 </div>
                 <div>
                     <span class="ticket-tier">R50 Per Ticket</span>
-                    <a href="https://pay.yoco.com/r/mEJjgP" target="_blank" class="btn btn-dark" style="margin-top:0;">Get Tickets</a>
+                    <button type="button" class="btn btn-dark yoco-checkout-btn" data-amount="5000" data-name="Raffle Ticket: Luxury Yacht Trip for 2">Get Tickets</button>
                 </div>
             </div>
 
@@ -830,7 +836,7 @@
                 </div>
                 <div>
                     <span class="ticket-tier">R50 Per Ticket</span>
-                    <a href="https://pay.yoco.com/r/m9eZo9" target="_blank" class="btn btn-dark" style="margin-top:0;">Get Tickets</a>
+                    <button type="button" class="btn btn-dark yoco-checkout-btn" data-amount="5000" data-name="Raffle Ticket: Premium Alcohol Hamper">Get Tickets</button>
                 </div>
             </div>
         </div>
@@ -849,7 +855,7 @@
                 </div>
                 <div>
                     <span class="price">R 350</span>
-                    <a href="https://pay.yoco.com/r/2wgAVn" target="_blank" class="btn btn-dark btn-merch">Purchase Jersey</a>
+                    <button type="button" class="btn btn-dark btn-merch yoco-checkout-btn" data-amount="35000" data-name="The KCB14 Commemorative Jersey">Purchase Jersey</button>
                 </div>
             </div>
             <div class="merch-card">
@@ -860,7 +866,7 @@
                 </div>
                 <div>
                     <span class="price">R 200</span>
-                    <a href="https://pay.yoco.com/r/70VLlx" target="_blank" class="btn btn-dark btn-merch">Purchase Cap</a>
+                    <button type="button" class="btn btn-dark btn-merch yoco-checkout-btn" data-amount="20000" data-name="Legacy Snapback Cap">Purchase Cap</button>
                 </div>
             </div>
             <div class="merch-card">
@@ -871,7 +877,7 @@
                 </div>
                 <div>
                     <span class="price">R 100</span>
-                    <a href="https://pay.yoco.com/r/4kGAZ1" target="_blank" class="btn btn-dark btn-merch">Purchase Keyring</a>
+                    <button type="button" class="btn btn-dark btn-merch yoco-checkout-btn" data-amount="10000" data-name="KCB14 Memorial Keyring">Purchase Keyring</button>
                 </div>
             </div>
         </div>
@@ -891,7 +897,6 @@
         const targetGoal = 150000;
 
         // --- AUTOPLAY BACKGROUND SLIDER ENGINE ---
-        // Your exact original clean paths array reconstructed
         const sliderImages = [
             "images/WhatsApp Image 2026-03-23 at 11.25.03 AM (1).jpg",
             "images/WhatsApp Image 2026-03-23 at 11.25.03 AM (3).jpg",
@@ -902,40 +907,93 @@
         const sliderContainer = document.getElementById('hero-slider');
         let currentSlide = 0;
 
-        // Loop array and build out structural slide layouts cleanly
         sliderImages.forEach((imgUrl, idx) => {
             const slideDiv = document.createElement('div');
-            slideDiv.classList.add('slide');
-            if (idx === 0) slideDiv.classList.add('active');
-            
-            // Set source url path structure
-            slideDiv.style.backgroundImage = `url("${imgUrl}")`;
-            
-            // Layout Sizing Injection: Keeps the images 100% visible, centered, and uncropped
-            slideDiv.style.backgroundSize = "contain";
-            slideDiv.style.backgroundPosition = "center top";
-            slideDiv.style.backgroundRepeat = "no-repeat";
-            
+            slideDiv.className = `slide ${idx === 0 ? 'active' : ''}`;
+            slideDiv.style.backgroundImage = `url('${imgUrl}')`;
             sliderContainer.appendChild(slideDiv);
         });
 
-        // Sliding timing rotation logic
-        if (sliderImages.length > 1) {
-            setInterval(() => {
-                const slides = document.querySelectorAll('.slide');
-                if (slides.length > 0) {
-                    slides[currentSlide].classList.remove('active');
-                    currentSlide = (currentSlide + 1) % slides.length;
-                    slides[currentSlide].classList.add('active');
-                }
-            }, 5000);
-        }
+        setInterval(() => {
+            const slides = document.querySelectorAll('.slide');
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000);
 
-        // --- SET TRACKER ELEMENTS VALUE ---
+        // --- PROGRESS BAR PROGRESSION ---
+        const percentage = Math.min((amountRaised / targetGoal) * 100, 100);
         document.getElementById('raised-text').innerText = `R ${amountRaised.toLocaleString()}`;
-        document.getElementById('goal-text').innerText = `R ${targetGoal.toLocaleString()}`;
-        const calculationPercentage = Math.min((amountRaised / targetGoal) * 100, 100);
-        document.getElementById('progress-fill').style.width = `${calculationPercentage}%`;
+        document.getElementById('progress-fill').style.width = `${percentage}%`;
+
+
+        // ==========================================
+        // --- SYSTEMATIC YOCO OVERLAY AUTOMATION ---
+        // ==========================================
+
+        // Initialize SDK with your public live key safely
+        const yoco = new window.YocoSDK({
+            publicKey: 'pk_live_YOUR_ACTUAL_YOCO_PUBLIC_KEY' // <-- Replace with your live public key
+        });
+
+        // Add a single click listener across all overlay checkout buttons systematically
+        document.querySelectorAll('.yoco-checkout-btn').forEach(button => {
+            button.addEventListener('click', async function(e) {
+                e.preventDefault();
+
+                // Get product information directly out of the clicked button properties
+                const productAmountInCents = parseInt(this.getAttribute('data-amount'), 10);
+                const productName = this.getAttribute('data-name');
+                const initialButtonText = this.innerText;
+
+                // Provide clear checkout UI interaction
+                this.disabled = true;
+                this.innerText = "Opening Secure Terminal...";
+
+                // Optional: Prompt or query for quick context details if you aren't using an input form block
+                const customerName = prompt("Please enter your full name for order mapping:") || "Anonymous Contributor";
+                const customerEmail = prompt("Please enter your email address for your payment receipt:") || "no-email@kcb14.co.za";
+
+                try {
+                    // Call your Vercel backend function directly relative to your production host domain
+                    const response = await fetch('/api/create-yoco-session', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            amountInCents: productAmountInCents,
+                            customerName: customerName,
+                            customerEmail: customerEmail,
+                            itemsOrdered: productName
+                        })
+                    });
+
+                    const sessionData = await response.json();
+
+                    if (!response.ok || !sessionData.id) {
+                        throw new Error("Unable to parse session token safely.");
+                    }
+
+                    // Execute overlay framework popup engine
+                    yoco.showPopup({
+                        id: sessionData.id,
+                        token: async (result) => {
+                            alert(`Success! Thank you for supporting the legacy fund for ${productName}.`);
+                            window.location.reload(); 
+                        },
+                        close: () => {
+                            this.disabled = false;
+                            this.innerText = initialButtonText;
+                        }
+                    });
+
+                } catch (err) {
+                    console.error("Payment initialization failed:", err);
+                    alert("We ran into an error setting up your secure session. Please try again.");
+                    this.disabled = false;
+                    this.innerText = initialButtonText;
+                }
+            });
+        });
     </script>
 </body>
 </html>
