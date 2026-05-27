@@ -93,6 +93,34 @@
             transform: translateY(-3px);
         }
 
+        /* --- QUICK DONATION MATRIX --- */
+        .donation-matrix-section {
+            padding: 40px 4% 20px 4%;
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .donation-matrix-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .donation-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+
         /* --- HEADER --- */
         header {
             background-color: var(--pure-black);
@@ -410,6 +438,7 @@
             margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .bank-line label {
@@ -459,9 +488,10 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="history.html">KCB History</a></li>
                 <li><a href="event.html">Memorial Event</a></li>
-                <li><a href="index.html#lineup">Squad Sheet</a></li>
-                <li><a href="index.html#prizes">Raffles & Prizes</a></li>
-                <li><a href="index.html#items">Voice Your KCB memory</a></li>
+                <li><a href="lineup.html">Squad Sheet</a></li>
+                <li><a href="sponsorship.html">Sponsorship</a></li>
+                <li><a href="prizes.html">Raffles & Prizes</a></li>
+                <li><a href="kcbmemory.html">Voice Your KCB memory</a></li>
             </ul>
         </nav>
     </header>
@@ -528,7 +558,8 @@
                         <li>Permanent recognition grid placement on our website</li>
                     </ul>
                 </div>
-                <a href="#outreach-form" class="btn btn-secondary">Select Package</a>
+                <!-- Drop Payment Link In href Below -->
+                <a href="https://pay.yoco.com/r/70VL8v" class="btn btn-primary">Secure Package</a>
             </div>
 
             <!-- Tier 2: Bring Kyle's Kids Home -->
@@ -543,7 +574,8 @@
                         <li>Official memorial web platform logo index placement</li>
                     </ul>
                 </div>
-                <a href="#outreach-form" class="btn btn-secondary">Select Package</a>
+                <!-- Drop Payment Link In href Below -->
+                <a href="https://pay.yoco.com/r/7XljVR" class="btn btn-primary">Bring Caylin and Caylib home</a>
             </div>
 
             <!-- Tier 3: Minute of Silence (FEATURED) -->
@@ -578,8 +610,21 @@
             </div>
 
         </div>
+    </section>
 
-        <!-- INTEGRATED FORM & BANKING CONTAINER -->
+    <!-- QUICK DONATION BUTTON MATRIX -->
+    <section class="donation-matrix-section">
+        <h2 class="donation-matrix-title">Direct Quick Donation</h2>
+        <div class="donation-grid">
+            <!-- Drop explicit gateway links into the hrefs below when ready -->
+            <a href="https://pay.yoco.com/r/2pnAAk" class="btn btn-secondary">Donate R200</a>
+            <a href="https://pay.yoco.com/r/m6jxxd" class="btn btn-secondary">Donate R500</a>
+            <a href="https://pay.yoco.com/r/2Dzj8j" class="btn btn-secondary">Donate R1000</a>
+        </div>
+    </section>
+
+    <!-- INTEGRATED FORM & BANKING CONTAINER -->
+    <section class="pricing-section" style="padding-top: 0;">
         <div class="int-section" id="outreach-form">
             
             <!-- LEFT COLUMN: FRONT-END SECURE FORM WITH FORMSPREE ENDPOINT -->
@@ -642,10 +687,10 @@
                     <div class="bank-title">Direct Trust EFT Account</div>
                     <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; font-family: 'Montserrat', sans-serif;">If you are backing the fund with a custom donation bracket outside standard advertising grids, clear transactions directly to this secure folder layout:</p>
                     
-                    <div class="bank-line"><label>Bank</label><span>First National Bank (FNB)</span></div>
-                    <div class="bank-line"><label>Account Name</label><span>KCB Memorial Fund</span></div>
-                    <div class="bank-line"><label>Account No</label><span>62910485721</span></div>
-                    <div class="bank-line"><label>Branch Code</label><span>250655</span></div>
+                    <div class="bank-line"><label>Bank</label><span>Capitec Bank</span></div>
+                    <div class="bank-line"><label>Account Name</label><span>KCB 14 Memorial</span></div>
+                    <div class="bank-line"><label>Account Type</label><span>Savings Account</span></div>
+                    <div class="bank-line"><label>Account No</label><span>2546535974</span></div>
                     <div class="bank-line"><label>Reference</label><span>NAME / CO + KCB14</span></div>
                     
                     <p style="font-size: 0.75rem; color: var(--primary-red); font-weight: 700; margin-top: 20px; font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 0.5px;">*Please submit your deposit notification via our form structure to log your listing assets.</p>
@@ -653,7 +698,6 @@
             </div>
 
         </div>
-
     </section>
 
     <!-- FOOTER -->
