@@ -1879,81 +1879,52 @@ nav a:hover {
 
         // --- AUTOPLAY BACKGROUND SLIDER ENGINE ---
 
-        const sliderImages = [
+       <script>
+    // --- CONFIG DATA FOR MEMORIAL ---
+    const amountRaised = 0;  
+    const targetGoal = 150000;
 
-            "images/kcb1.jpg",
+    // --- SLIDER ---
+    const sliderImages = [
+        "images/kcb1.jpg",
+        "images/kcb2.jpg",
+        "images/kcb3.jpg",
+        "images/kcb4.jpg",
+        "images/kcb5.jpg"
+    ];
 
-            "images/kcb2.jpg",
-
-            "images/kcb3.jpg",
-
-            "images/kcb4.jpg",
-
-            "images/kcb5.jpg"
-
-        ];
-
-
-
-       const sliderContainer = document.getElementById('hero-slider');
-
-    
-
-    // Create elements dynamically
+    const sliderContainer = document.getElementById('hero-slider');
 
     sliderImages.forEach((src, index) => {
-
-    const slide = document.createElement('div');
-
-    slide.className = `slide ${index === 0 ? 'active' : ''}`;
-slide.style.backgroundImage = `url('${src}')`;
-
-
-
-    slide.style.backgroundSize = 'cover';
-
-slide.style.backgroundPosition = 'top center';
-
-
-
-    sliderContainer.appendChild(slide);
-
-});
-
-
-
-    // Slider logic
+        const slide = document.createElement('div');
+        slide.className = `slide ${index === 0 ? 'active' : ''}`;
+        slide.style.backgroundImage = `url('${src}')`;
+        slide.style.backgroundSize = 'cover';
+        slide.style.backgroundPosition = 'top center';
+        sliderContainer.appendChild(slide);
+    });
 
     let currentSlide = 0;
 
     setInterval(() => {
-
         const slides = document.querySelectorAll('.slide');
-
         slides[currentSlide].classList.remove('active');
-
         currentSlide = (currentSlide + 1) % slides.length;
-
         slides[currentSlide].classList.add('active');
-
     }, 5000);
 
+    // --- PROGRESS BAR ---
+    const progressFill = document.getElementById('progress-fill');
+    const percentage = (amountRaised / targetGoal) * 100;
+    progressFill.style.width = `${percentage}%`;
 
+    // --- HAMBURGER MENU (FIXED) ---
+    const hamburger = document.getElementById("hamburger");
+    const navMenu = document.getElementById("nav-menu");
 
-        // --- PROGRESS BAR INITIALIZATION ---
-
-        const progressFill = document.getElementById('progress-fill');
-
-        const percentage = (amountRaised / targetGoal) * 100;
-
-      progressFill.style.width = `${percentage}%`;
-</script>
-const hamburger = document.getElementById("hamburger");
-const navMenu = document.getElementById("nav-menu");
-
-hamburger.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-});
+    hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+    });
 </script>
 </body>
 
