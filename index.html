@@ -64,11 +64,9 @@
 
 
 
-        body {
-
-            font-family: 'Montserrat', sans-serif;
-
-            background-color: var(--primary-red);
+      body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--pure-black);
 
             color: var(--pure-white);
 
@@ -281,7 +279,48 @@ nav a:hover {
 .hamburger {
     display: none;
 }
+/* --- DESKTOP ENHANCEMENTS --- */
 
+@media (min-width: 1200px) {
+
+    .hero-content h1 {
+        font-size: 6rem;
+    }
+
+    .hero-content p {
+        font-size: 1.5rem;
+    }
+
+    .bio-section,
+    .schedule-section,
+    .prizes-section,
+    .sponsor-section,
+    .merch-preview,
+    .lineup-section {
+        padding-top: 140px;
+        padding-bottom: 140px;
+    }
+
+    .tracker-container {
+        max-width: 950px;
+    }
+
+    .timeline-container {
+        max-width: 900px;
+    }
+
+    .prizes-grid,
+    .merch-grid,
+    .sponsor-grid {
+        gap: 40px;
+    }
+
+    .prize-card,
+    .merch-card,
+    .sponsor-card {
+        border-radius: 10px;
+    }
+}
 
 /* MOBILE HEADER */
 @media (max-width: 768px) {
@@ -344,25 +383,6 @@ nav a:hover {
     }
 
     .bio-section {
-        grid-template-columns: 1fr;
-        gap: 40px;
-        text-align: center;
-    }
-
-    .bio-title h2 {
-        font-size: 2.2rem;
-    }
-
-    .bio-title .accent-word {
-        font-size: 3rem;
-    }
-
-    .tracker-metrics {
-        flex-direction: column;
-        gap: 10px;
-    }
-@media (max-width: 768px) {
-    .bio-section {
         grid-template-columns: 1fr !important;
         text-align: center;
         gap: 25px;
@@ -375,6 +395,11 @@ nav a:hover {
     .bio-title .accent-word {
         font-size: 2.8rem;
     }
+
+    .tracker-metrics {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
 
@@ -383,18 +408,23 @@ nav a:hover {
         /* --- IMMERSIVE BACKGROUND SLIDER --- */
 
         .hero {
-
-            position: relative;
-
-            height: 85vh;
-
-            width: 100%;
-
-            background-color: var(--pure-black);
-
-            overflow: hidden;
+    position: relative;
+    min-height: 720px;
+    height: 90vh;
+    max-height: 950px;
+    background-color: var(--pure-black);
+    overflow: hidden;
 
         }
+
+    .hero-content {
+    width: 100%;
+}
+
+.hero-content p {
+    width: 100%;
+    max-width: 850px;
+}
 
 
 
