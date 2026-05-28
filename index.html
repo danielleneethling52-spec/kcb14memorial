@@ -241,146 +241,129 @@
             margin-top: 15px;
 
         }
-
-
-
 header {
-
     background-color: var(--pure-black);
-
     padding: 15px 4%;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
-
     border-bottom: 2px solid rgba(204, 0, 0, 0.3);
-
 }
-
-
 
 .logo img {
-
     height: 50px;
-
 }
 
-
-
-/* NAV */
-
+/* DESKTOP NAV */
 nav ul {
-
     display: flex;
-
     gap: 20px;
-
     list-style: none;
-
 }
-
-
 
 nav a {
-
     color: white;
-
     text-decoration: none;
-
     font-weight: 700;
-
     text-transform: uppercase;
-
     font-size: 0.85rem;
-
+    transition: 0.3s ease;
 }
 
+nav a:hover {
+    color: var(--primary-red);
+}
 
-
-/* HAMBURGER */
-
+/* HAMBURGER HIDDEN ON DESKTOP */
 .hamburger {
-
     display: none;
-
-    font-size: 30px;
-
-    cursor: pointer;
-
-    color: white;
-
 }
 
 
-
-/* MOBILE */
-
+/* MOBILE HEADER */
 @media (max-width: 768px) {
 
-
-
     header {
-
-        flex-direction: row; /* IMPORTANT FIX */
-
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
     }
 
-
+    .logo img {
+        height: 45px;
+    }
 
     .hamburger {
-
         display: block;
-
+        font-size: 32px;
+        cursor: pointer;
+        color: white;
+        z-index: 2000;
     }
-
-
 
     nav {
-
         position: absolute;
-
-        top: 70px;
-
+        top: 80px;
         left: 0;
-
         width: 100%;
-
         background: var(--pure-black);
-
         display: none;
-
-        flex-direction: column;
-
+        border-top: 1px solid rgba(255,255,255,0.1);
     }
-
-
-
-    nav ul {
-
-        flex-direction: column;
-
-        text-align: center;
-
-        padding: 20px 0;
-
-    }
-
-
 
     nav.active {
-
-        display: flex;
-
+        display: block;
     }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 18px;
+        font-size: 0.9rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .bio-section {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .bio-title h2 {
+        font-size: 2.2rem;
+    }
+
+    .bio-title .accent-word {
+        font-size: 3rem;
+    }
+
+    .tracker-metrics {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}
+
 
 
 
@@ -735,7 +718,8 @@ nav a {
             text-align: center;
 
         }
-      .log-item strong {
+
+.log-item strong {
 
             display: block;
 
@@ -1318,27 +1302,6 @@ nav a {
         .footer-sub { color: var(--text-muted); font-size: 0.85rem; letter-spacing: 1px; }
 
 
-
-        /* --- RESPONSIVE FIXES --- */
-
-        @media (max-width: 768px) {
-
-            header { flex-direction: column; gap: 15px; }
-
-            .hero-content h1 { font-size: 2.8rem; }
-
-            .hero-content p { font-size: 1.2rem; }
-
-            .bio-section { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-
-            .bio-title h2 { font-size: 2.2rem; }
-
-            .bio-title .accent-word { font-size: 3rem; }
-
-            .tracker-metrics { flex-direction: column; gap: 5px; }
-
-        }
-
     </style>
 
 </head>
@@ -1349,34 +1312,28 @@ nav a {
 
     <header>
 
-        <div class="logo">
+    <div class="logo">
+        <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo">
+    </div>
 
-            <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo">
+    <!-- HAMBURGER -->
+    <div class="hamburger" id="hamburger">
+        ☰
+    </div>
 
-        </div>
+    <!-- NAV -->
+    <nav id="nav-menu">
+        <ul>
+            <li><a href="history.html">KCB14 History</a></li>
+            <li><a href="event.html">Memorial Event</a></li>
+            <li><a href="lineup.html">Squad Sheet</a></li>
+            <li><a href="sponsorship.html">Sponsorship</a></li>
+            <li><a href="prizes.html">Raffles & Prizes</a></li>
+            <li><a href="kcbmemory.html">Voice Your KCB Memory</a></li>
+        </ul>
+    </nav>
 
-        <nav>
-
-            <ul>
-
-                <li><a href="history.html">KCB14 History</a></li>
-
-                <li><a href="event.html">Memorial Event</a></li>
-
-                <li><a href="lineup.html">Squad Sheet</a></li>
-
-                <li><a href="sponsorship.html">Sponsorship</a></li>
-
-                <li><a href="prizes.html">Raffles & Prizes</a></li>
-
-                <li><a href="kcbmemory.html">Voice Your KCB memory</a></li>
-
-            </ul>
-
-        </nav>
-
-    </header>
-
+</header>
 
 
     <section class="hero">
@@ -1736,8 +1693,7 @@ nav a {
     
         
 
-        <<section class="merch-preview" id="items">
-
+       <section class="merch-preview" id="items">
     <h2 style="color: var(--pure-white);">
 
         Official KCB14 Merchandise
@@ -1891,9 +1847,6 @@ nav a {
 
 
     </div>
-
-</section>
-
     </section>
 
 
@@ -1952,9 +1905,8 @@ nav a {
 
     const slide = document.createElement('div');
 
-    slide.className = slide ${index === 0 ? 'active' : ''};
-
-    slide.style.backgroundImage = url('${src}');
+    slide.className = `slide ${index === 0 ? 'active' : ''}`;
+slide.style.backgroundImage = `url('${src}')`;
 
 
 
@@ -1994,20 +1946,13 @@ slide.style.backgroundPosition = 'top center';
 
         const percentage = (amountRaised / targetGoal) * 100;
 
-        progressFill.style.width = ${percentage}%;
-
-<script>
-
+      progressFill.style.width = `${percentage}%`;
+</script>
 const hamburger = document.getElementById("hamburger");
-
 const navMenu = document.getElementById("nav-menu");
 
-
-
 hamburger.addEventListener("click", () => {
-
     navMenu.classList.toggle("active");
-
 });
 </script>
 </body>
