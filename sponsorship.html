@@ -473,29 +473,80 @@
             .inner-hero h1 { font-size: 2.8rem; }
             .objectives-grid { grid-template-columns: 1fr; gap: 30px; }
         }
+        /* --- HAMBURGER ICON --- */
+.hamburger {
+    display: none;
+    font-size: 32px;
+    color: var(--pure-white);
+    cursor: pointer;
+}
+
+/* --- MOBILE NAV --- */
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: block;
+        z-index: 2001;
+    }
+
+    nav {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--pure-black);
+        display: none;
+        flex-direction: column;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        z-index: 2000;
+    }
+
+    nav.active {
+        display: block;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    nav ul li {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 18px;
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body>
 
     <!-- HEADER -->
     <header>
-        <div class="logo">
-            <a href="index.html">
-                <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="history.html">KCB History</a></li>
-                <li><a href="event.html">Memorial Event</a></li>
-                <li><a href="lineup.html">Squad Sheet</a></li>
-                <li><a href="sponsorship.html">Sponsorship</a></li>
-                <li><a href="prizes.html">Raffles & Prizes</a></li>
-                <li><a href="kcbmemory.html">Voice Your KCB memory</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="logo">
+        <a href="index.html">
+            <img src="images/Gemini_Generated_Image_hfo459hfo459hfo4-removebg-preview.png" alt="KCB14 Logo">
+        </a>
+    </div>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger" id="hamburger">☰</div>
+
+    <nav id="navMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="history.html">KCB History</a></li>
+            <li><a href="event.html">Memorial Event</a></li>
+            <li><a href="lineup.html">Squad Sheet</a></li>
+            <li><a href="sponsorship.html">Sponsorship</a></li>
+            <li><a href="prizes.html">Raffles & Prizes</a></li>
+            <li><a href="kcbmemory.html">Voice Your KCB memory</a></li>
+        </ul>
+    </nav>
+</header>
 
     <!-- INNER PAGE HERO -->
     <section class="inner-hero">
@@ -709,6 +760,20 @@
         <p class="footer-tagline">Built on Legacy, Driven by Passion</p>
         <p class="footer-sub">The KCB Memorial Day</p>
     </footer>
+<script>
+const hamburger = document.getElementById("hamburger");
+const nav = document.getElementById("navMenu");
 
+hamburger.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
+
+// close menu when clicking link
+document.querySelectorAll("nav a").forEach(link => {
+    link.addEventListener("click", () => {
+        nav.classList.remove("active");
+    });
+});
+</script>
 </body>
 </html>
