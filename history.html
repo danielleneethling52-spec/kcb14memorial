@@ -317,7 +317,8 @@
             .media-placeholder { height: 280px; }
         }
 
-        @media (max-width: 768px) {
+      /* --- MOBILE NAV --- */
+@media (max-width: 768px) {
 
     .hamburger {
         display: block;
@@ -347,6 +348,7 @@
         flex-direction: column;
         gap: 0;
         display: flex;
+        list-style: none;
     }
 
     #nav-menu ul li {
@@ -357,6 +359,7 @@
         display: block;
         padding: 18px;
     }
+}
 <style>
 </head>
 <body>
@@ -479,7 +482,7 @@
         <p class="footer-tagline">Built on Legacy, Driven by Passion</p>
         <p class="footer-sub">The KCB Memorial Day</p>
     </footer>
-    <script>
+   <script>
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("nav-menu");
 
@@ -487,11 +490,11 @@ hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("active");
 });
 
-// optional: close menu when clicking a link
 document.querySelectorAll("#nav-menu a").forEach(link => {
     link.addEventListener("click", () => {
         navMenu.classList.remove("active");
     });
+});
 </script>
 </body>
 </html>
